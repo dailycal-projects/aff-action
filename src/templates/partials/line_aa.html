@@ -49,7 +49,7 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var margin = {top: 0, right: 150, bottom: 80, left: 80},
+var margin = {top: 0, right: 180, bottom: 80, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -180,10 +180,11 @@ legend.append("rect")
     .attr("opacity", 0.8)
     .style("fill", function(d) { return colors(d[0].symbol); });
 legend.append("text")
+    .data(["African-American", "Hispanic", "American Indian", "White", "Asian/Pacific Islander"])
     .attr("x", 30)
     .attr("y", 9)
     .attr("dy", "0.32em")
-    .text(function(d) { return d[0].symbol; });
+    .text(function(d) { return d; });
   /* Add 'curtain' rectangle to hide entire graph */
   var curtain = svg.append('rect')
     .attr('x', -1 * width)
