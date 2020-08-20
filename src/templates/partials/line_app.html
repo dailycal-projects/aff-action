@@ -36,7 +36,6 @@ path.area {
 </style>
 
 <body>
-<center>Number of applications to UC Berkeley by ethnicity</center>
 <div id="line_app"></div>
 </body>
 
@@ -68,7 +67,7 @@ var line = d3.line()
     .y(function(d) { return y(d.price); });
 
 //data = d3.csvParse(d3.select("pre#data").text());
-d3.csv("../berkeley_app.csv", function(error, data) {
+d3.csv("berkeley_app.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
@@ -98,7 +97,7 @@ d3.csv("../berkeley_app.csv", function(error, data) {
 
   // Compute the minimum and maximum date, and the maximum price.
   x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
-  y.domain([0, 50000]).nice();
+  y.domain([0, 40000]).nice();
 
   // Add an svg2 element with the desired dimensions and margin.
   var svg2 = d3.select("#line_app").append("svg")
@@ -139,6 +138,14 @@ d3.csv("../berkeley_app.csv", function(error, data) {
         .attr('d', function(d) {
           return line(d);
         })
+
+var title = svg2.append("g")
+      	.attr("transform", "translate(" + [width / 2, -50] + ") ")
+
+title.append("text")
+      	.attr("class", "title")
+      	.attr("text-anchor", "middle")
+      	.text("Number of applications to UC Berkeley by ethnicity")
 
 var legend = svg2.append("g")
     .style("font-family", "benton-sans")

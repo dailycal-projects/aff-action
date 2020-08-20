@@ -20,6 +20,10 @@ path.area {
   stroke: #fff;
 }
 
+.x.axis text {
+  font-size: 14px;
+}
+
 .x.axis .minor {
   stroke-opacity: .5;
 }
@@ -39,12 +43,11 @@ path.area {
 
 </style>
 
-<center>Retention rate of UC system students by ethnicity</center>
 <div id="line-aa"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var margin = {top: 50, right: 180, bottom: 80, left: 80},
+var margin = {top: 80, right: 180, bottom: 20, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -70,7 +73,7 @@ var line = d3.line()
     .y(function(d) { return y(d.price); });
 
 //data = d3.csvParse(d3.select("pre#data").text());
-d3.csv("../retention_data.csv", function(error, data) {
+d3.csv("retention_data.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
@@ -157,6 +160,13 @@ d3.csv("../retention_data.csv", function(error, data) {
         .attr('d', function(d) {
           return line(d);
         })
+
+var title = svg.append("g")
+      	.attr("transform", "translate(" + [width / 2, -50] + ") ")
+title.append("text")
+      	.attr("class", "title")
+      	.attr("text-anchor", "middle")
+      	.text("Six-year graduation rate of UC system students by ethnicity")
 
 var legend = svg.append("g")
     .style("font-family", "benton-sans")

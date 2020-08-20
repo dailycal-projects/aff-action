@@ -39,12 +39,12 @@
     }
 
     .axis-label {
-      font-size: 12px;
+      font-size: 16px;
       font-weight: 700;
     }
 
     .title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
     }
 
@@ -149,7 +149,7 @@
       yTicks: null
     };
 
-    var dataUrl1 = "../bubble.json";
+    var dataUrl1 = "bubble.json";
 
     d3.queue()
       .defer(d3.json, dataUrl1)
@@ -237,6 +237,15 @@
       	.attr("text-anchor", "middle")
       	.attr("transform", "translate(" + [cfg.width / 2, cfg.height + 60] +")")
       	.text(cfg.xLabel);
+
+      var yLabel = plot.append("g")
+      	.append("text")
+      	.attr("class", "axis-label")
+      	.attr("text-anchor", "middle")
+        .attr("dy", -50)
+        .attr("dx", -cfg.height/2 + 30)
+        .attr("transform", "rotate(-90)")
+      	.text("URM percentage in freshman class");
 
       var yAxis = d3.axisLeft(y.nice())
       	.ticks(cfg.yTicks)

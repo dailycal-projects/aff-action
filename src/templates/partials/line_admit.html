@@ -36,7 +36,6 @@ path.area {
 </style>
 
 <body>
-<center>Admission rates to UC Berkeley by ethnicity</center>
 <div id="line_admit"></div>
 </body>
 
@@ -68,7 +67,7 @@ var line = d3.line()
     .y(function(d) { return y(d.price); });
 
 //data = d3.csvParse(d3.select("pre#data").text());
-d3.csv("../berkeley_app.csv", function(error, data) {
+d3.csv("berkeley_app.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
@@ -139,6 +138,14 @@ d3.csv("../berkeley_app.csv", function(error, data) {
         .attr('d', function(d) {
           return line(d);
         })
+
+var title = svg2.append("g")
+      	.attr("transform", "translate(" + [width / 2, -50] + ") ")
+
+title.append("text")
+      	.attr("class", "title")
+      	.attr("text-anchor", "middle")
+      	.text("Admission rates to UC Berkeley by ethnicity")
 
 var legend = svg2.append("g")
     .style("font-family", "benton-sans")

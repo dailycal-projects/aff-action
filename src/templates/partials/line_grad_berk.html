@@ -38,7 +38,6 @@ path.area {
 }
 
 </style>
-<center>Retention rate of UC Berkeley students by ethnicity</center>
 <div id="line-app"></div>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -68,7 +67,7 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.price); });
 
-d3.csv("../retention_data.csv", function(error, data) {
+d3.csv("retention_data.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
@@ -155,6 +154,12 @@ d3.csv("../retention_data.csv", function(error, data) {
           return line(d);
         })
 
+var title = svg.append("g")
+      	.attr("transform", "translate(" + [width / 2, -50] + ") ")
+title.append("text")
+      	.attr("class", "title")
+      	.attr("text-anchor", "middle")
+      	.text("Six-year graduation rate of UC Berkeley students by ethnicity")
 var legend = svg.append("g")
     .style("font-family", "benton-sans")
     .style("font-size", 16)
