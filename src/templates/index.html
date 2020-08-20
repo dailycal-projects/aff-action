@@ -12,14 +12,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8">
-        {%block title%}<title>The Daily Californian</title>{%endblock%}
+        {%block title%}<title>Affirmative Action</title>{%endblock%}
         {%include "meta/_icons.html"%}
 
         {%include "meta/_social.html"%}
         {% if env == 'production' %}
         <link href="css/main-app.css" rel="stylesheet">
         {% endif %}
-        
+
         <!-- Google fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
         <!-- Font awesome -->
@@ -35,25 +35,54 @@
     <body>
       {% include "partials/_nav.html" %}
       {% include "partials/_header.html" %}
-      <center>{% include "partials/line_aa.html" %}</center>
-      <center>{% include "partials/line_grad.html" %}</center>
 
-      <article class="container">
-        <p>Hi! To find more instructions on how to navigate this template of code, if you haven't included ArchieML support (this pulls specifically-formatted text from a Google Doc with shared settings of "Anyone with the link can view"), then add ArchieML support to this project for a copy of <a href="https://docs.google.com/document/d/1KimvJF9qiNHZ_gx32hhGanN639-JYVeMtFSsqa3w1Lk/edit">this Google Doc</a> that is appropriately shared. Or if you've added Archie configuration and provided a doc id, then in terminal, exit out of the current process and run `gulp archie`.</p>
-
-        {% for section in ARCHIE.sections %}
-            {% include '_sections/' + section.type +'.html' %}
-        {% endfor %}
-        <!-- Breakpoint reminder which you can delete -->
-        {% include "partials/_breakpoints.html" %}
-      </article>
-      {% include "partials/_footer.html" %}
-      <script type="text/javascript">window.tweetText = "{{META.share.twitter.share_tweet}}";</script>
+      <figure class="no-gutters-phone">
+    <img src="images/campus.jpg"></br>
+      <figcaption class="figcaption">UC Berkeley will start its fall semester online.  <figcredit style='font-family:benton-sans'>SAMUEL ALBILLO | SENIOR STAFF</figcaption>
+      </figure>
+      <center>{% include "partials/line_grad_all.html" %}</center>
+      <div class="story">
+        <p align='justify'>On July 21, UC Berkeley updated its reopening plans for the fall semester. According to the most recent announcement from the Division of Student Affairs, the campus will “begin the fall semester with fully remote instruction,” but hopes to switch to a hybrid model depending on public health conditions. Originally, UC Berkeley planned on starting the semester hybrid and shifting to a fully online model after Thanksgiving. To gain a better understanding of UC Berkeley’s reopening strategy, The Daily Californian compared UC Berkeley to other similar colleges and universities.
+        </p>
+      </div>
+      <center>{% include "partials/line_grad_berk.html" %}</center>
+      <div class="story">
+        <p align='justify'>On July 21, UC Berkeley updated its reopening plans for the fall semester. According to the most recent announcement from the Division of Student Affairs, the campus will “begin the fall semester with fully remote instruction,” but hopes to switch to a hybrid model depending on public health conditions. Originally, UC Berkeley planned on starting the semester hybrid and shifting to a fully online model after Thanksgiving. To gain a better understanding of UC Berkeley’s reopening strategy, The Daily Californian compared UC Berkeley to other similar colleges and universities.
+        </p>
+      </div>
+      <center>{% include "partials/line_app.html" %}</center>
+      <div class="story">
+        <p align='justify'>On July 21, UC Berkeley updated its reopening plans for the fall semester. According to the most recent announcement from the Division of Student Affairs, the campus will “begin the fall semester with fully remote instruction,” but hopes to switch to a hybrid model depending on public health conditions. Originally, UC Berkeley planned on starting the semester hybrid and shifting to a fully online model after Thanksgiving. To gain a better understanding of UC Berkeley’s reopening strategy, The Daily Californian compared UC Berkeley to other similar colleges and universities.
+        </p>
+      </div>
+      <center>{% include "partials/line_admit.html" %}</center>
+      <div class="story">
+        <p align='justify'>On July 21, UC Berkeley updated its reopening plans for the fall semester. According to the most recent announcement from the Division of Student Affairs, the campus will “begin the fall semester with fully remote instruction,” but hopes to switch to a hybrid model depending on public health conditions. Originally, UC Berkeley planned on starting the semester hybrid and shifting to a fully online model after Thanksgiving. To gain a better understanding of UC Berkeley’s reopening strategy, The Daily Californian compared UC Berkeley to other similar colleges and universities.
+        </p>
+        </br>
+      </div>
+      <center>{% include "partials/line_enroll.html" %}</center>
+      <div class="story">
+        <p align='justify'>On July 21, UC Berkeley updated its reopening plans for the fall semester. According to the most recent announcement from the Division of Student Affairs, the campus will “begin the fall semester with fully remote instruction,” but hopes to switch to a hybrid model depending on public health conditions. Originally, UC Berkeley planned on starting the semester hybrid and shifting to a fully online model after Thanksgiving. To gain a better understanding of UC Berkeley’s reopening strategy, The Daily Californian compared UC Berkeley to other similar colleges and universities.
+        </p>
+      </div>
+    <div class="nerd-box">
     </body>
+<h4>About this story</h4>
+<p align='left'>
+  Data for re-opening plans for colleges was sourced from the <a href=""> Chronicle of Higher Education</a>. The plans are still in flux, and this article will be updated with new data when available.
+</p>
+{% include "partials/_footer.html" %}
+<script type="text/javascript">window.tweetText = "{{META.share.twitter.share_tweet}}";</script>
+<br>
+<h4>Support us</h4>
+<p>We're a nonprofit, student-run newsroom. Please consider <a href="https://donate.dailycal.org/">donating</a> to support our coverage.</p>
+</div>
+<div class="story">
+    <p align = 'justify'><strong style="font-weight: 1500;">Clarification(s):</strong></br>A previous version of this article may have implied that UC Berkeley planned to have in-person instruction after Thanksgiving break.</p>
+    <p align = 'justify'><strong style="font-weight: 1500;">Revision(s):</strong></br>On July 31, data for college reopenings was updated. The map may appear significantly different from the previous version.</p>
+</div>
 </html>
-
-
 {% block js %}
 <script type="text/javascript" src="js/main-app.bundle.js"></script>
-{%include "partials/_ai2html-resizer.html"%}
 {% endblock %}

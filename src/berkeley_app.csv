@@ -1,0 +1,625 @@
+﻿date,symbol,price
+1994,Applicants-International,759
+1994,Applicants-Unknown,1255
+1994,Applicants-White,6984
+1994,Applicants-Asian,8336
+1994,Applicants-Chicano/Latino,2423
+1994,Applicants-American Indian,140
+1994,Applicants-African American,1087
+1994,Applicants-All,20984
+1994,Admits-International,0.217391304
+1994,Admits-Unknown,0.407968127
+1994,Admits-White,0.39862543
+1994,Admits-Asian,0.370681382
+1994,Admits-Chicano/Latino,0.567478333
+1994,Admits-American Indian,0.707142857
+1994,Admits-African American,0.51149954
+1994,Admits-All,0.408930614
+1994,Enrollees-International,0.375757576
+1994,Enrollees-Unknown,0.369140625
+1994,Enrollees-White,0.34841954
+1994,Enrollees-Asian,0.449190939
+1994,Enrollees-Chicano/Latino,0.361454545
+1994,Enrollees-American Indian,0.373737374
+1994,Enrollees-African American,0.363309353
+1994,Enrollees-All,0.389814707
+1995,Applicants-International,977
+1995,Applicants-Unknown,1474
+1995,Applicants-White,7771
+1995,Applicants-Asian,8560
+1995,Applicants-Chicano/Latino,2730
+1995,Applicants-American Indian,197
+1995,Applicants-African American,1199
+1995,Applicants-All,22908
+1995,Admits-International,0.207778915
+1995,Admits-Unknown,0.388738128
+1995,Admits-White,0.381546776
+1995,Admits-Asian,0.342523364
+1995,Admits-Chicano/Latino,0.551648352
+1995,Admits-American Indian,0.680203046
+1995,Admits-African American,0.512093411
+1995,Admits-All,0.389689192
+1995,Enrollees-International,0.438423645
+1995,Enrollees-Unknown,0.366492147
+1995,Enrollees-White,0.345362563
+1995,Enrollees-Asian,0.434515689
+1995,Enrollees-Chicano/Latino,0.351925631
+1995,Enrollees-American Indian,0.462686567
+1995,Enrollees-African American,0.350162866
+1995,Enrollees-All,0.381315111
+1996,Applicants-International,955
+1996,Applicants-Unknown,1909
+1996,Applicants-White,8531
+1996,Applicants-Asian,9600
+1996,Applicants-Chicano/Latino,2831
+1996,Applicants-American Indian,172
+1996,Applicants-African American,1213
+1996,Applicants-All,25211
+1996,Admits-International,0.214659686
+1996,Admits-Unknown,0.359350445
+1996,Admits-White,0.361036221
+1996,Admits-Asian,0.319375
+1996,Admits-Chicano/Latino,0.486753797
+1996,Admits-American Indian,0.639534884
+1996,Admits-African American,0.492168178
+1996,Admits-All,0.361826187
+1996,Enrollees-International,0.341463415
+1996,Enrollees-Unknown,0.390670554
+1996,Enrollees-White,0.355519481
+1996,Enrollees-Asian,0.473907371
+1996,Enrollees-Chicano/Latino,0.396952104
+1996,Enrollees-American Indian,0.436363636
+1996,Enrollees-African American,0.380234506
+1996,Enrollees-All,0.406489805
+1997,Applicants-International,1420
+1997,Applicants-Unknown,1636
+1997,Applicants-White,9430
+1997,Applicants-Asian,10593
+1997,Applicants-Chicano/Latino,2878
+1997,Applicants-American Indian,138
+1997,Applicants-African American,1176
+1997,Applicants-All,27271
+1997,Admits-International,0.142253521
+1997,Admits-Unknown,0.38202934
+1997,Admits-White,0.299787911
+1997,Admits-Asian,0.283677901
+1997,Admits-Chicano/Latino,0.444058374
+1997,Admits-American Indian,0.47826087
+1997,Admits-African American,0.477891156
+1997,Admits-All,0.314069891
+1997,Enrollees-International,0.311881188
+1997,Enrollees-Unknown,0.368
+1997,Enrollees-White,0.36858861
+1997,Enrollees-Asian,0.492845258
+1997,Enrollees-Chicano/Latino,0.372456964
+1997,Enrollees-American Indian,0.333333333
+1997,Enrollees-African American,0.459074733
+1997,Enrollees-All,0.417046118
+1998,Applicants-International,1421
+1998,Applicants-Unknown,4638
+1998,Applicants-White,8931
+1998,Applicants-Asian,10557
+1998,Applicants-Chicano/Latino,3156
+1998,Applicants-American Indian,175
+1998,Applicants-African American,1256
+1998,Applicants-All,30134
+1998,Admits-International,0.139338494
+1998,Admits-Unknown,0.311341095
+1998,Admits-White,0.314746389
+1998,Admits-Asian,0.299990528
+1998,Admits-Chicano/Latino,0.205640051
+1998,Admits-American Indian,0.177142857
+1998,Admits-African American,0.197452229
+1998,Admits-All,0.283666291
+1998,Enrollees-International,0.333333333
+1998,Enrollees-Unknown,0.407202216
+1998,Enrollees-White,0.387762362
+1998,Enrollees-Asian,0.498579097
+1998,Enrollees-Chicano/Latino,0.419106317
+1998,Enrollees-American Indian,0.451612903
+1998,Enrollees-African American,0.508064516
+1998,Enrollees-All,0.436944314
+1999,Applicants-International,1503
+1999,Applicants-Unknown,3020
+1999,Applicants-White,10813
+1999,Applicants-Asian,11772
+1999,Applicants-Chicano/Latino,2823
+1999,Applicants-American Indian,159
+1999,Applicants-African American,1143
+1999,Applicants-All,31233
+1999,Admits-International,0.146373919
+1999,Admits-Unknown,0.303642384
+1999,Admits-White,0.278183668
+1999,Admits-Asian,0.280071356
+1999,Admits-Chicano/Latino,0.270279844
+1999,Admits-American Indian,0.257861635
+1999,Admits-African American,0.271216098
+1999,Admits-All,0.273941024
+1999,Enrollees-International,0.413636364
+1999,Enrollees-Unknown,0.386041439
+1999,Enrollees-White,0.369348404
+1999,Enrollees-Asian,0.480436761
+1999,Enrollees-Chicano/Latino,0.432503277
+1999,Enrollees-American Indian,0.536585366
+1999,Enrollees-African American,0.406451613
+1999,Enrollees-All,0.42286115
+2000,Applicants-International,1695
+2000,Applicants-Unknown,3268
+2000,Applicants-White,10989
+2000,Applicants-Asian,12469
+2000,Applicants-Chicano/Latino,3439
+2000,Applicants-American Indian,173
+2000,Applicants-African American,1318
+2000,Applicants-All,33351
+2000,Admits-International,0.134513274
+2000,Admits-Unknown,0.302019584
+2000,Admits-White,0.274365274
+2000,Admits-Asian,0.26954848
+2000,Admits-Chicano/Latino,0.265774935
+2000,Admits-American Indian,0.277456647
+2000,Admits-African American,0.267830046
+2000,Admits-All,0.26703847
+2000,Enrollees-International,0.346491228
+2000,Enrollees-Unknown,0.407294833
+2000,Enrollees-White,0.372802653
+2000,Enrollees-Asian,0.486759893
+2000,Enrollees-Chicano/Latino,0.356673961
+2000,Enrollees-American Indian,0.416666667
+2000,Enrollees-African American,0.419263456
+2000,Enrollees-All,0.419380193
+2001,Applicants-International,2039
+2001,Applicants-Unknown,3467
+2001,Applicants-White,11515
+2001,Applicants-Asian,13551
+2001,Applicants-Chicano/Latino,3990
+2001,Applicants-American Indian,207
+2001,Applicants-African American,1458
+2001,Applicants-All,36227
+2001,Admits-International,0.089259441
+2001,Admits-Unknown,0.280934526
+2001,Admits-White,0.260008684
+2001,Admits-Asian,0.254741348
+2001,Admits-Chicano/Latino,0.25764411
+2001,Admits-American Indian,0.275362319
+2001,Admits-African American,0.23388203
+2001,Admits-All,0.249206393
+2001,Enrollees-International,0.313186813
+2001,Enrollees-Unknown,0.409650924
+2001,Enrollees-White,0.379425518
+2001,Enrollees-Asian,0.491309386
+2001,Enrollees-Chicano/Latino,0.377431907
+2001,Enrollees-American Indian,0.385964912
+2001,Enrollees-African American,0.419354839
+2001,Enrollees-All,0.425454143
+2002,Applicants-International,1635
+2002,Applicants-Unknown,3165
+2002,Applicants-White,11835
+2002,Applicants-Asian,13770
+2002,Applicants-Chicano/Latino,4282
+2002,Applicants-American Indian,200
+2002,Applicants-African American,1558
+2002,Applicants-All,36445
+2002,Admits-International,0.111926606
+2002,Admits-Unknown,0.260031596
+2002,Admits-White,0.24503591
+2002,Admits-Asian,0.246623094
+2002,Admits-Chicano/Latino,0.240308267
+2002,Admits-American Indian,0.23
+2002,Admits-African American,0.212451861
+2002,Admits-All,0.238935382
+2002,Enrollees-International,0.475409836
+2002,Enrollees-Unknown,0.365735115
+2002,Enrollees-White,0.366896552
+2002,Enrollees-Asian,0.483804476
+2002,Enrollees-Chicano/Latino,0.389698737
+2002,Enrollees-American Indian,0.304347826
+2002,Enrollees-African American,0.432024169
+2002,Enrollees-All,0.419499311
+2003,Applicants-International,1746
+2003,Applicants-Unknown,3568
+2003,Applicants-White,11651
+2003,Applicants-Asian,13462
+2003,Applicants-Chicano/Latino,4653
+2003,Applicants-American Indian,198
+2003,Applicants-African American,1723
+2003,Applicants-All,37001
+2003,Admits-International,0.149484536
+2003,Admits-Unknown,0.256726457
+2003,Admits-White,0.244871685
+2003,Admits-Asian,0.25233992
+2003,Admits-Chicano/Latino,0.223941543
+2003,Admits-American Indian,0.257575758
+2003,Admits-African American,0.190365641
+2003,Admits-All,0.239128672
+2003,Enrollees-International,0.383141762
+2003,Enrollees-Unknown,0.374454148
+2003,Enrollees-White,0.368734665
+2003,Enrollees-Asian,0.470120695
+2003,Enrollees-Chicano/Latino,0.380038388
+2003,Enrollees-American Indian,0.31372549
+2003,Enrollees-African American,0.451219512
+2003,Enrollees-All,0.412748644
+2004,Applicants-International,1524
+2004,Applicants-Unknown,3284
+2004,Applicants-White,11617
+2004,Applicants-Asian,13813
+2004,Applicants-Chicano/Latino,4853
+2004,Applicants-American Indian,185
+2004,Applicants-African American,1558
+2004,Applicants-All,36834
+2004,Admits-International,0.12664042
+2004,Admits-Unknown,0.264616322
+2004,Admits-White,0.272273392
+2004,Admits-Asian,0.259465721
+2004,Admits-Chicano/Latino,0.199052133
+2004,Admits-American Indian,0.221621622
+2004,Admits-African American,0.153401797
+2004,Admits-All,0.245832655
+2004,Enrollees-International,0.414507772
+2004,Enrollees-Unknown,0.386651323
+2004,Enrollees-White,0.369901992
+2004,Enrollees-Asian,0.451171875
+2004,Enrollees-Chicano/Latino,0.358178054
+2004,Enrollees-American Indian,0.390243902
+2004,Enrollees-African American,0.451882845
+2004,Enrollees-All,0.405632247
+2005,Applicants-International,1896
+2005,Applicants-Unknown,2671
+2005,Applicants-White,12089
+2005,Applicants-Asian,13607
+2005,Applicants-Chicano/Latino,4982
+2005,Applicants-American Indian,191
+2005,Applicants-African American,1578
+2005,Applicants-All,37014
+2005,Admits-International,0.14556962
+2005,Admits-Unknown,0.295020592
+2005,Admits-White,0.279510299
+2005,Admits-Asian,0.285735283
+2005,Admits-Chicano/Latino,0.229024488
+2005,Admits-American Indian,0.277486911
+2005,Admits-African American,0.192648923
+2005,Admits-All,0.265548171
+2005,Enrollees-International,0.373188406
+2005,Enrollees-Unknown,0.366751269
+2005,Enrollees-White,0.365196804
+2005,Enrollees-Asian,0.489197531
+2005,Enrollees-Chicano/Latino,0.375985977
+2005,Enrollees-American Indian,0.264150943
+2005,Enrollees-African American,0.440789474
+2005,Enrollees-All,0.417641673
+2006,Applicants-International,2189
+2006,Applicants-Unknown,2862
+2006,Applicants-White,13053
+2006,Applicants-Asian,15660
+2006,Applicants-Chicano/Latino,5918
+2006,Applicants-American Indian,251
+2006,Applicants-African American,1863
+2006,Applicants-All,41796
+2006,Admits-International,0.129739607
+2006,Admits-Unknown,0.281621244
+2006,Admits-White,0.244235042
+2006,Admits-Asian,0.260536398
+2006,Admits-Chicano/Latino,0.202940182
+2006,Admits-American Indian,0.231075697
+2006,Admits-African American,0.173913043
+2006,Admits-All,0.237845727
+2006,Enrollees-International,0.373239437
+2006,Enrollees-Unknown,0.366004963
+2006,Enrollees-White,0.377666248
+2006,Enrollees-Asian,0.466421569
+2006,Enrollees-Chicano/Latino,0.400499584
+2006,Enrollees-American Indian,0.293103448
+2006,Enrollees-African American,0.466049383
+2006,Enrollees-All,0.418167186
+2007,Applicants-International,2606
+2007,Applicants-Unknown,2805
+2007,Applicants-White,14040
+2007,Applicants-Asian,15996
+2007,Applicants-Chicano/Latino,6446
+2007,Applicants-American Indian,233
+2007,Applicants-African American,2023
+2007,Applicants-All,44149
+2007,Admits-International,0.123561013
+2007,Admits-Unknown,0.280213904
+2007,Admits-White,0.243091168
+2007,Admits-Asian,0.256501625
+2007,Admits-Chicano/Latino,0.193453304
+2007,Admits-American Indian,0.253218884
+2007,Admits-African American,0.15916955
+2007,Admits-All,0.23221364
+2007,Enrollees-International,0.397515528
+2007,Enrollees-Unknown,0.352417303
+2007,Enrollees-White,0.369469675
+2007,Enrollees-Asian,0.465513039
+2007,Enrollees-Chicano/Latino,0.394546913
+2007,Enrollees-American Indian,0.355932203
+2007,Enrollees-African American,0.422360248
+2007,Enrollees-All,0.412114709
+2008,Applicants-International,3317
+2008,Applicants-Unknown,3267
+2008,Applicants-White,15045
+2008,Applicants-Asian,16702
+2008,Applicants-Chicano/Latino,7653
+2008,Applicants-American Indian,246
+2008,Applicants-African American,2243
+2008,Applicants-All,48473
+2008,Admits-International,0.226107929
+2008,Admits-Unknown,0.269360269
+2008,Admits-White,0.218544367
+2008,Admits-Asian,0.233205604
+2008,Admits-Chicano/Latino,0.160329283
+2008,Admits-American Indian,0.18699187
+2008,Admits-African American,0.142220241
+2008,Admits-All,0.214655581
+2008,Enrollees-International,0.472
+2008,Enrollees-Unknown,0.355681818
+2008,Enrollees-White,0.358272506
+2008,Enrollees-Asian,0.459050064
+2008,Enrollees-Chicano/Latino,0.377343113
+2008,Enrollees-American Indian,0.413043478
+2008,Enrollees-African American,0.457680251
+2008,Enrollees-All,0.409514656
+2009,Applicants-International,4383
+2009,Applicants-Unknown,2670
+2009,Applicants-White,14547
+2009,Applicants-Asian,16697
+2009,Applicants-Chicano/Latino,7797
+2009,Applicants-American Indian,270
+2009,Applicants-African American,2318
+2009,Applicants-All,48682
+2009,Admits-International,0.173397217
+2009,Admits-Unknown,0.274157303
+2009,Admits-White,0.228088266
+2009,Admits-Asian,0.241720069
+2009,Admits-Chicano/Latino,0.166602539
+2009,Admits-American Indian,0.181481481
+2009,Admits-African American,0.144089733
+2009,Admits-All,0.21626063
+2009,Enrollees-International,0.427631579
+2009,Enrollees-Unknown,0.349726776
+2009,Enrollees-White,0.398131404
+2009,Enrollees-Asian,0.453171457
+2009,Enrollees-Chicano/Latino,0.367205543
+2009,Enrollees-American Indian,0.387755102
+2009,Enrollees-African American,0.386227545
+2009,Enrollees-All,0.413753799
+2010,Applicants-International,4929
+2010,Applicants-Unknown,2721
+2010,Applicants-White,14170
+2010,Applicants-Asian,17332
+2010,Applicants-Chicano/Latino,8209
+2010,Applicants-American Indian,352
+2010,Applicants-African American,2661
+2010,Applicants-All,50374
+2010,Admits-International,0.234124569
+2010,Admits-Unknown,0.26644616
+2010,Admits-White,0.231968948
+2010,Admits-Asian,0.2304985
+2010,Admits-Chicano/Latino,0.148251919
+2010,Admits-American Indian,0.227272727
+2010,Admits-African American,0.126644119
+2010,Admits-All,0.214297058
+2010,Enrollees-International,0.443674177
+2010,Enrollees-Unknown,0.344827586
+2010,Enrollees-White,0.348950411
+2010,Enrollees-Asian,0.406257822
+2010,Enrollees-Chicano/Latino,0.350041085
+2010,Enrollees-American Indian,0.35
+2010,Enrollees-African American,0.364985163
+2010,Enrollees-All,0.380639185
+2011,Applicants-International,6330
+2011,Applicants-Unknown,1279
+2011,Applicants-White,14604
+2011,Applicants-Asian,18365
+2011,Applicants-Chicano/Latino,9427
+2011,Applicants-American Indian,330
+2011,Applicants-African American,2647
+2011,Applicants-All,52982
+2011,Admits-International,0.229699842
+2011,Admits-Unknown,0.288506646
+2011,Admits-White,0.225897015
+2011,Admits-Asian,0.24503131
+2011,Admits-Chicano/Latino,0.148403522
+2011,Admits-American Indian,0.233333333
+2011,Admits-African American,0.133736305
+2011,Admits-All,0.216148881
+2011,Enrollees-International,0.454607978
+2011,Enrollees-Unknown,0.276422764
+2011,Enrollees-White,0.360412246
+2011,Enrollees-Asian,0.409555556
+2011,Enrollees-Chicano/Latino,0.346676197
+2011,Enrollees-American Indian,0.428571429
+2011,Enrollees-African American,0.367231638
+2011,Enrollees-All,0.387967167
+2012,Applicants-International,9434
+2012,Applicants-Unknown,1708
+2012,Applicants-White,15406
+2012,Applicants-Asian,20555
+2012,Applicants-Chicano/Latino,11117
+2012,Applicants-American Indian,368
+2012,Applicants-African American,3129
+2012,Applicants-All,61717
+2012,Admits-International,0.133771465
+2012,Admits-Unknown,0.253512881
+2012,Admits-White,0.194794236
+2012,Admits-Asian,0.217027487
+2012,Admits-Chicano/Latino,0.135828011
+2012,Admits-American Indian,0.206521739
+2012,Admits-African American,0.116650687
+2012,Admits-All,0.179982825
+2012,Enrollees-International,0.418383518
+2012,Enrollees-Unknown,0.318706697
+2012,Enrollees-White,0.333888704
+2012,Enrollees-Asian,0.399686169
+2012,Enrollees-Chicano/Latino,0.357615894
+2012,Enrollees-American Indian,0.381578947
+2012,Enrollees-African American,0.389041096
+2012,Enrollees-All,0.374684912
+2013,Applicants-International,11601
+2013,Applicants-Unknown,2059
+2013,Applicants-White,16859
+2013,Applicants-Asian,21157
+2013,Applicants-Chicano/Latino,12321
+2013,Applicants-American Indian,328
+2013,Applicants-African American,3381
+2013,Applicants-All,67706
+2013,Admits-International,0.154210844
+2013,Admits-Unknown,0.24137931
+2013,Admits-White,0.193131265
+2013,Admits-Asian,0.214444392
+2013,Admits-Chicano/Latino,0.115899683
+2013,Admits-American Indian,0.182926829
+2013,Admits-African American,0.107364685
+2013,Admits-All,0.176202995
+2013,Enrollees-International,0.474007826
+2013,Enrollees-Unknown,0.338028169
+2013,Enrollees-White,0.355651106
+2013,Enrollees-Asian,0.402027772
+2013,Enrollees-Chicano/Latino,0.392156863
+2013,Enrollees-American Indian,0.3
+2013,Enrollees-African American,0.358126722
+2013,Enrollees-All,0.394467728
+2014,Applicants-International,13719
+2014,Applicants-Unknown,2066
+2014,Applicants-White,17795
+2014,Applicants-Asian,23099
+2014,Applicants-Chicano/Latino,13122
+2014,Applicants-American Indian,444
+2014,Applicants-African American,3540
+2014,Applicants-All,73785
+2014,Admits-International,0.10999344
+2014,Admits-Unknown,0.246369797
+2014,Admits-White,0.178645687
+2014,Admits-Asian,0.19823369
+2014,Admits-Chicano/Latino,0.123075751
+2014,Admits-American Indian,0.202702703
+2014,Admits-African American,0.095762712
+2014,Admits-All,0.160195162
+2014,Enrollees-International,0.495692512
+2014,Enrollees-Unknown,0.400785855
+2014,Enrollees-White,0.425290972
+2014,Enrollees-Asian,0.474557764
+2014,Enrollees-Chicano/Latino,0.487925697
+2014,Enrollees-American Indian,0.466666667
+2014,Enrollees-African American,0.469026549
+2014,Enrollees-All,0.462436548
+2015,Applicants-International,15027
+2015,Applicants-Unknown,2494
+2015,Applicants-White,18781
+2015,Applicants-Asian,24365
+2015,Applicants-Chicano/Latino,13865
+2015,Applicants-American Indian,417
+2015,Applicants-African American,3944
+2015,Applicants-All,78893
+2015,Admits-International,0.093764557
+2015,Admits-Unknown,0.2638332
+2015,Admits-White,0.186145573
+2015,Admits-Asian,0.220931664
+2015,Admits-Chicano/Latino,0.13487198
+2015,Admits-American Indian,0.179856115
+2015,Admits-African American,0.108772819
+2015,Admits-All,0.168836272
+2015,Enrollees-International,0.487579844
+2015,Enrollees-Unknown,0.398176292
+2015,Enrollees-White,0.384153318
+2015,Enrollees-Asian,0.433587219
+2015,Enrollees-Chicano/Latino,0.396791444
+2015,Enrollees-American Indian,0.36
+2015,Enrollees-African American,0.361305361
+2015,Enrollees-All,0.416666667
+2016,Applicants-International,15633
+2016,Applicants-Unknown,2728
+2016,Applicants-White,19905
+2016,Applicants-Asian,24928
+2016,Applicants-Chicano/Latino,14724
+2016,Applicants-American Indian,422
+2016,Applicants-African American,4220
+2016,Applicants-All,82560
+2016,Admits-International,0.072155057
+2016,Admits-Unknown,0.277859238
+2016,Admits-White,0.19226325
+2016,Admits-Asian,0.232148588
+2016,Admits-Chicano/Latino,0.131350177
+2016,Admits-American Indian,0.182464455
+2016,Admits-African American,0.109952607
+2016,Admits-All,0.169270833
+2016,Enrollees-International,0.519503546
+2016,Enrollees-Unknown,0.432717678
+2016,Enrollees-White,0.418604651
+2016,Enrollees-Asian,0.466390185
+2016,Enrollees-Chicano/Latino,0.435884178
+2016,Enrollees-American Indian,0.285714286
+2016,Enrollees-African American,0.370689655
+2016,Enrollees-All,0.447370304
+2017,Applicants-International,15434
+2017,Applicants-Unknown,2643
+2017,Applicants-White,20053
+2017,Applicants-Asian,26166
+2017,Applicants-Chicano/Latino,15883
+2017,Applicants-American Indian,427
+2017,Applicants-African American,4439
+2017,Applicants-All,85045
+2017,Admits-International,0.084164831
+2017,Admits-Unknown,0.267120696
+2017,Admits-White,0.196828405
+2017,Admits-Asian,0.225292364
+2017,Admits-Chicano/Latino,0.133287162
+2017,Admits-American Indian,0.215456674
+2017,Admits-African American,0.11106105
+2017,Admits-All,0.171074137
+2017,Enrollees-International,0.53656659
+2017,Enrollees-Unknown,0.426345609
+2017,Enrollees-White,0.396503674
+2017,Enrollees-Asian,0.455301103
+2017,Enrollees-Chicano/Latino,0.435521965
+2017,Enrollees-American Indian,0.260869565
+2017,Enrollees-African American,0.377281947
+2017,Enrollees-All,0.438449378
+2018,Applicants-International,17064
+2018,Applicants-Unknown,3046
+2018,Applicants-White,18911
+2018,Applicants-Asian,29170
+2018,Applicants-Chicano/Latino,16293
+2018,Applicants-American Indian,382
+2018,Applicants-African American,4743
+2018,Applicants-All,89609
+2018,Admits-International,0.085150023
+2018,Admits-Unknown,0.228824688
+2018,Admits-White,0.164718947
+2018,Admits-Asian,0.184367501
+2018,Admits-Chicano/Latino,0.127846314
+2018,Admits-American Indian,0.136125654
+2018,Admits-African American,0.110267763
+2018,Admits-All,0.148433751
+2018,Enrollees-International,0.549896765
+2018,Enrollees-Unknown,0.413199426
+2018,Enrollees-White,0.409951846
+2018,Enrollees-Asian,0.465414652
+2018,Enrollees-Chicano/Latino,0.449351896
+2018,Enrollees-American Indian,0.384615385
+2018,Enrollees-African American,0.361376673
+2018,Enrollees-All,0.451996091
+2019,Applicants-International,17035
+2019,Applicants-Unknown,2655
+2019,Applicants-White,18013
+2019,Applicants-Asian,29116
+2019,Applicants-Chicano/Latino,15877
+2019,Applicants-American Indian,338
+2019,Applicants-African American,4364
+2019,Applicants-All,87398
+2019,Admits-International,0.090578221
+2019,Admits-Unknown,0.248964218
+2019,Admits-White,0.178926331
+2019,Admits-Asian,0.205316664
+2019,Admits-Chicano/Latino,0.143729924
+2019,Admits-American Indian,0.24260355
+2019,Admits-African American,0.116406966
+2019,Admits-All,0.163356141
+2019,Enrollees-International,0.549578743
+2019,Enrollees-Unknown,0.455370651
+2019,Enrollees-White,0.421656841
+2019,Enrollees-Asian,0.463700234
+2019,Enrollees-Chicano/Latino,0.425942156
+2019,Enrollees-American Indian,0.292682927
+2019,Enrollees-African American,0.350393701
+2019,Enrollees-All,0.452055754

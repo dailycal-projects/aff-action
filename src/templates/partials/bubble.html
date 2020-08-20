@@ -75,20 +75,20 @@
   </style>
 </head>
 
-<body>
+<div id="bubble"></div>
   <script>
 		var margin = {top: 120, right: 150, bottom: 125, left: 270};
 
     var width = 960 - margin.left - margin.right,
     		height = 500 - margin.top - margin.bottom;
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#bubble").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var div = d3.select("body").append("div")
+    var div = d3.select("#bubble").append("div")
     	.attr("class", "tooltip")
     	.style("opacity", 0);
 
@@ -379,4 +379,3 @@
 
 
   </script>
-</body>

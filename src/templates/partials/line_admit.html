@@ -2,11 +2,6 @@
 <meta charset="utf-8">
 <style>
 
-body {
-  font: 10px sans-serif;
-  margin: 0;
-}
-
 path.line {
   fill: none;
   stroke: #666;
@@ -37,19 +32,18 @@ path.area {
   fill: none;
   stroke: #000;
 }
-.guideline {
-  margin-right: 100px;
-  float: right;
-}
 
 </style>
 
-<center>Retention rate of UC students by ethnicity</center>
-<div id="line-aa"></div>
+<body>
+<center>Admission rates to UC Berkeley by ethnicity</center>
+<div id="line_admit"></div>
+</body>
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var margin = {top: 0, right: 180, bottom: 80, left: 50},
+var margin = {top: 80, right: 180, bottom: 80, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -75,7 +69,7 @@ var line = d3.line()
     .y(function(d) { return y(d.price); });
 
 //data = d3.csvParse(d3.select("pre#data").text());
-d3.csv("../data.csv", function(error, data) {
+d3.csv("../berkeley_app.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
@@ -85,73 +79,57 @@ d3.csv("../data.csv", function(error, data) {
   console.log(data);
   console.log(parse(data[0].date));
 
-  var berk_aa = data.filter(function(d) {
-    return d.symbol == "berk-aa";
+  var berk_w = data.filter(function(d) {
+    return d.symbol == "Admits-White";
   });
 
-  var all_aa = data.filter(function(d) {
-    return d.symbol == "all-aa";
+  var berk_ap = data.filter(function(d) {
+    return d.symbol == "Admits-Asian";
   });
 
   var berk_h = data.filter(function(d) {
-    return d.symbol == 'berk-h';
-  });
-  var all_h = data.filter(function(d) {
-    return d.symbol == 'all-h';
+    return d.symbol == 'Admits-Chicano/Latino';
   });
   var berk_ai = data.filter(function(d) {
-    return d.symbol == 'berk-ai';
+    return d.symbol == 'Admits-American Indian';
   });
-  var all_ai = data.filter(function(d) {
-    return d.symbol == 'all-ai';
+  var berk_aa = data.filter(function(d) {
+    return d.symbol == 'Admits-African American';
   });
-  var berk_ap = data.filter(function(d) {
-    return d.symbol == 'berk-ap';
-  });
-  var all_ap = data.filter(function(d) {
-    return d.symbol == 'all-ap';
-  });
-  var berk_w = data.filter(function(d) {
-    return d.symbol == 'berk-w';
-  });
-  var all_w = data.filter(function(d) {
-    return d.symbol == 'all-w';
-  });
-
 
   // Compute the minimum and maximum date, and the maximum price.
   x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
-  y.domain([0.5, 1]).nice();
+  y.domain([0, 0.8]).nice();
 
-  // Add an SVG element with the desired dimensions and margin.
-  var svg = d3.select("#line-aa").append("svg")
+  // Add an svg2 element with the desired dimensions and margin.
+  var svg2 = d3.select("#line_admit").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
   // Add the clip path.
-  svg.append("clipPath")
+  svg2.append("clipPath")
       .attr("id", "clip")
     .append("rect")
       .attr("width", width)
       .attr("height", height);
 
   // Add the x-axis.
-  svg.append("g")
+  svg2.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
   // Add the y-axis.
-  svg.append("g")
+  svg2.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(" + width + ",0)")
       .call(yAxis);
 
-  var colors = d3.scaleOrdinal().domain(['all-aa', 'all-h', 'all-ai', 'all-w', 'all-ap']).range(d3.schemeCategory10);
-  svg.selectAll('.line')
-    .data([all_aa, all_h, all_ai, all_w, all_ap])
+  var colors = d3.scaleOrdinal().domain(['Admits-African American', 'Admits-Chicano/Latino', 'Admits-American Indian', 'Admits-White', 'Admits-Asian']).range(d3.schemeCategory10);
+  svg2.selectAll('.line')
+    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -163,13 +141,13 @@ d3.csv("../data.csv", function(error, data) {
           return line(d);
         })
 
-var legend = svg.append("g")
+var legend = svg2.append("g")
     .style("font-family", "benton-sans")
     .style("font-size", 16)
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([all_aa, all_h, all_ai, all_w, all_ap])
+    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -178,15 +156,16 @@ legend.append("rect")
     .attr("width", 16)
     .attr("height", 16)
     .attr("opacity", 0.8)
-    .style("fill", function(d) { return colors(d[0].symbol); });
+  .style("fill", function(d) { return colors(d[0].symbol); });
 legend.append("text")
-    .data(["African-American", "Hispanic", "American Indian", "White", "Asian/Pacific Islander"])
+    .data(["African-American", "Latino", "American Indian", "White", "Asian/Pacific Islander"])
     .attr("x", 30)
     .attr("y", 9)
     .attr("dy", "0.32em")
     .text(function(d) { return d; });
+
   /* Add 'curtain' rectangle to hide entire graph */
-  var curtain = svg.append('rect')
+  var curtain = svg2.append('rect')
     .attr('x', -1 * width)
     .attr('y', -1 * height)
     .attr('height', height)
@@ -196,7 +175,7 @@ legend.append("text")
     .style('fill', '#ffffff');
     
   /* Optionally add a guideline */
-  var guideline = svg.append('line')
+  var guideline = svg2.append('line')
     .attr('stroke', '#333')
     .attr('stroke-width', 0)
     .attr('class', 'guide')
@@ -206,7 +185,7 @@ legend.append("text")
     .attr('y2', height)
     
   /* Create a shared transition for anything we're animating */
-  var t = svg.transition()
+  var t = svg2.transition()
     .delay(750)
     .duration(6000)
     .ease(d3.easeLinear)

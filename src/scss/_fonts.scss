@@ -4,7 +4,7 @@ $tablet: 'tablet-gothic-condensed', 'Arial Narrow', 'Helvetica Neue', Helvetica,
 $lato: 'Lato', sans-serif;
 
 $serif: Georgia, Times, 'Times New Roman', serif;
-$sans: $lato;
+$sans: 'benton-sans';
 
 .sans {
   font-family: $sans;
@@ -14,4 +14,19 @@ $sans: $lato;
 .sans-bold {
   font-family: $sans;
   font-weight: 700;
+}
+
+@font-face {
+  font-family: "tiempos";
+  src: url("../fonts/TiemposHeadline-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "benton-sans-bold";
+  src: url("../fonts/BentonSans-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "benton-sans";
+  src: url("../fonts/BentonSansCond-Book.otf") format("opentype");
 }
