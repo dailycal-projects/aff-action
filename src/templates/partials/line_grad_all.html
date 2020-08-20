@@ -44,7 +44,7 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var margin = {top: 0, right: 180, bottom: 0, left: 50},
+var margin = {top: 20, right: 180, bottom: 80, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -116,7 +116,7 @@ d3.csv("../retention_data.csv", function(error, data) {
 
   // Compute the minimum and maximum date, and the maximum price.
   x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
-  y.domain([0.5, 1]).nice();
+  y.domain([0.6, 1]).nice();
 
   // Add an SVG element with the desired dimensions and margin.
   var svg = d3.select("#line-aa").append("svg")

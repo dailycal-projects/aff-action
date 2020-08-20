@@ -4,7 +4,6 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
 
   <style>
-    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
 
     .chart-background {
     	opacity: 0;
@@ -14,15 +13,17 @@
       position: absolute;
       text-align: center;
       padding: 5px;
-      font: 12px sans-serif;
+      font: 12px benton-sans;
       background-color: white;
       border: 1px #b7b7b7 solid;
       pointer-events: none;
-      width: 100px;
+      width: 120px;
+      height: 80px;
+
     }
 
     .dot {
-      fill: #7ff4a8;
+      fill: #ffb4d9;
       stroke: black;
       stroke-width: 0.75;
     }
@@ -77,10 +78,10 @@
 
 <div id="bubble"></div>
   <script>
-		var margin = {top: 120, right: 150, bottom: 125, left: 270};
+		var margin = {top: 120, right: 75, bottom: 125, left: 200};
 
     var width = 960 - margin.left - margin.right,
-    		height = 500 - margin.top - margin.bottom;
+    		height = 800 - margin.top - margin.bottom;
 
     var svg = d3.select("#bubble").append("svg")
           .attr("width", width + margin.left + margin.right)
@@ -95,21 +96,21 @@
     var formatPercent = d3.format(".0%");
 
     var formatThousands = function(d) {
-      return d == 0 ? "0" : d3.format(".2s")(d);
+      return d;
     };
 
     var formatRatio = function(d) {
-      return d == 0 ? "" : d + ":1";
+      return d;
     }
 
     var uniLookup = {};
 
     var xAccessor = function(d, x) {
-      return x(uniLookup[d.name].nonAcademicStaff);
+      return x(uniLookup[d.name].state);
     };
 
     var y1Accessor = function(d, y) {
-      return y(d.max / d.min);
+      return y(uniLookup[d.name].enroll);
     };
 
     var y2Accessor = function(d, y) {
@@ -117,25 +118,24 @@
     };
 
     var r1Accessor = function(d, r) {
-      return r(uniLookup[d.name].over);
+      return r(uniLookup[d.name].enrollment);
     }
 
     var xScale = d3.scaleLinear(),
         y1Scale = d3.scaleLinear(),
-        r1Scale = d3.scaleSqrt();
-
+        r1Scale = d3.scaleLinear();
     var y2Scale = d3.scaleLinear();
 
     var config1 = {
       top: 0,
       left: 0,
-      width: 950,
+      width: 600,
       height: height,
       labelsToShow: ["Imperial", "UCL", "LSE", "LBS", "Brunel", "UEL"],
       dotClassName: "dot1",
-      title: "Pay Ratios",
-      subtitle: "(Highest to Lowest Paid)",
-      xLabel: "No. of Non-academic Staff",
+      title: "Ratio of URM in state to incoming freshman class",
+      subtitle: "",
+      xLabel: "URM as percentage of graduating seniors",
       tickSize: 0,
       domainOpacity: 0,
       xAxisOffset: 10,
@@ -162,9 +162,10 @@
       yTicks: 3
     };
 
-    var dataUrl1 = "https://raw.githubusercontent.com/tlfrd/pay-ratios/master/data/over140k.json";
+    //var dataUrl1 = "https://raw.githubusercontent.com/tlfrd/pay-ratios/master/data/over140k.json";
+    var dataUrl1 = "../bubble.json";
 
-    var dataUrl2 = "https://raw.githubusercontent.com/tlfrd/pay-ratios/master/data/payratio.json";
+    var dataUrl2 = "../bubble.json";
 
     d3.queue()
       .defer(d3.json, dataUrl1)
@@ -175,21 +176,20 @@
     function load(error, data1, data2) {
       if (error) throw error;
 
-      var over140 = data1.number_over_140k;
-      var ratios1516 = data2.pay_ratios_2015_16;
+      var over140 = data1.schools;
+      var ratios1516 = data2.schools;
 
       over140.forEach(d => uniLookup[d.name] = d);
 
       // Filter out universities where number of women is not provided
-      over140 = over140.filter(a => a.women != "-");
 
-      xScale.domain([0, d3.max(over140, d => d.nonAcademicStaff)]);
-      y1Scale.domain([0, d3.max(ratios1516, d => d.max / d.min)]);
+      xScale.domain([0.1, 0.7]);
+      y1Scale.domain([0, 0.5]);
 
-      r1Scale.domain(d3.extent(over140, d => d.over))
+      r1Scale.domain(d3.extent(over140, d => d.enrollment))
         		.range([2, 20]);
 
-      y2Scale.domain(d3.extent(ratios1516, d => d.max));
+      y2Scale.domain([0, 0.5]);
 
      	scatterPlot(ratios1516, config1, xScale, y1Scale, r1Scale, xAccessor, y1Accessor, r1Accessor, formatThousands, formatRatio);
 
@@ -216,17 +216,15 @@
       	})
     }
 
-    pulse(3000);
+    pulse(2000);
 
     var legendLabel = legend.append("g")
     	.attr("transform", "translate(" + [0, -50] + ")")
     	.attr("text-anchor", "middle")
 
     legendLabel.append("text")
-    	.text("No. of Staff")
-    legendLabel.append("text")
     	.attr("y", 14)
-    	.text("Earning Over 140k");
+    	.text("Freshman Enrollment");
 
     // Draws a scatter plot
     function scatterPlot(data, cfg, x, y, r, xAcc, yAcc, rAcc, xFormat, yFormat) {
@@ -315,6 +313,7 @@
           .attr("cx", d => xAcc(d, x))
           .attr("cy", d => yAcc(d, y))
           .attr("r", d => rAcc(d, r))
+
       		.on("mouseover", function(d) {
             d3.selectAll("circle#" + d.id)
             	.raise()
@@ -355,8 +354,7 @@
         .style("opacity", 1);
 
       div.html("<b>" + d.name + "</b></br>" +
-              "Students: " + uniLookup[d.name].students + "</br>" +
-              "Staff: " + uniLookup[d.name].nonAcademicStaff)
+              "Enrollment: " + d3.format(",")(uniLookup[d.name].enrollment) + "</br>")
       	.style("top", top + "px")
       	.style("left", left + "px");
     }
