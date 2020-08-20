@@ -11,14 +11,14 @@
 
     div.tooltip{
       position: absolute;
-      text-align: center;
+      text-align: left;
       padding: 5px;
       font: 12px benton-sans;
       background-color: white;
       border: 1px #b7b7b7 solid;
       pointer-events: none;
-      width: 120px;
-      height: 80px;
+      width: 130px;
+      height: 100px;
 
     }
 
@@ -34,12 +34,6 @@
 
     .dot1 {
       fill: #ffb4d9;
-      stroke: black;
-      stroke-width: 0.75;
-    }
-
-    .dot2 {
-      fill: #90bcf9;
       stroke: black;
       stroke-width: 0.75;
     }
@@ -65,7 +59,7 @@
     }
 
     text {
-      font-family: sans-serif;
+      font-family: benton-sans;
       font-size: 12px;
     }
 
@@ -78,16 +72,16 @@
 
 <div id="bubble"></div>
   <script>
-		var margin = {top: 120, right: 75, bottom: 125, left: 200};
+    var margin_bubble = {top: 120, right: 75, bottom: 125, left: 200};
 
-    var width = 960 - margin.left - margin.right,
-    		height = 800 - margin.top - margin.bottom;
+    var width = 960 - margin_bubble.left - margin_bubble.right,
+    		height = 800 - margin_bubble.top - margin_bubble.bottom;
 
     var svg = d3.select("#bubble").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
+          .attr("width", width + margin_bubble.left + margin_bubble.right)
+          .attr("height", height + margin_bubble.top + margin_bubble.bottom)
         .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          .attr("transform", "translate(" + margin_bubble.left + "," + margin_bubble.top + ")");
 
     var div = d3.select("#bubble").append("div")
     	.attr("class", "tooltip")
@@ -118,7 +112,7 @@
     };
 
     var r1Accessor = function(d, r) {
-      return r(uniLookup[d.name].enrollment);
+      return r(uniLookup[d.name].total);
     }
 
     var xScale = d3.scaleLinear(),
@@ -131,7 +125,18 @@
       left: 0,
       width: 600,
       height: height,
-      labelsToShow: ["Imperial", "UCL", "LSE", "LBS", "Brunel", "UEL"],
+      labelsToShow: ["University of Michigan", "UC Berkeley", "UCLA", "University of Virginia",
+        "Georgia Tech",
+"UNC Chapel Hill",
+"UC Santa Barbara",
+"University of Florida",
+"UC Irvine",
+"UC San Diego",
+"UC Davis",
+"College of William and Mary",
+"UW Madison",
+"University of Illinois Urbana-Champaign",
+"UT Austin"],
       dotClassName: "dot1",
       title: "Ratio of URM in state to incoming freshman class",
       subtitle: "",
@@ -144,55 +149,29 @@
       yTicks: null
     };
 
-    var config2 = {
-      top: 0,
-      left: width - 225,
-      width: 200,
-      height: height,
-      labelsToShow: ["Imperial", "UCL", "LBS"],
-      dotClassName: "dot2",
-      title: "Highest Pay ",
-      subtitle: "",
-      xLabel: "No. of Non-academic Staff",
-      tickSize: 0,
-      domainOpacity: 0,
-      xAxisOffset: 10,
-      yAxisOffset: 10,
-      xTicks: 5,
-      yTicks: 3
-    };
-
-    //var dataUrl1 = "https://raw.githubusercontent.com/tlfrd/pay-ratios/master/data/over140k.json";
     var dataUrl1 = "../bubble.json";
-
-    var dataUrl2 = "../bubble.json";
 
     d3.queue()
       .defer(d3.json, dataUrl1)
-      .defer(d3.json, dataUrl2)
       .await(load);
 
     // When all data has loaded draw the scatter plot(s)
-    function load(error, data1, data2) {
+    function load(error, data1) {
       if (error) throw error;
 
-      var over140 = data1.schools;
-      var ratios1516 = data2.schools;
+      var bubble_data = data1.schools;
 
-      over140.forEach(d => uniLookup[d.name] = d);
+      bubble_data.forEach(d => uniLookup[d.name] = d);
 
       // Filter out universities where number of women is not provided
 
       xScale.domain([0.1, 0.7]);
       y1Scale.domain([0, 0.5]);
 
-      r1Scale.domain(d3.extent(over140, d => d.enrollment))
-        		.range([2, 20]);
+      r1Scale.domain(d3.extent(bubble_data, d => d.total))
+        		.range([5, 20]);
 
-      y2Scale.domain([0, 0.5]);
-
-     	scatterPlot(ratios1516, config1, xScale, y1Scale, r1Scale, xAccessor, y1Accessor, r1Accessor, formatThousands, formatRatio);
-
+     	scatterPlot(bubble_data, config1, xScale, y1Scale, r1Scale, xAccessor, y1Accessor, r1Accessor, formatThousands, formatRatio);
     }
 
     var legend = svg.append("g")
@@ -238,7 +217,7 @@
       	.attr("width", cfg.width)
       	.attr("height", cfg.height);
 
-			x.range([0, cfg.width]);
+      x.range([0, cfg.width]);
       y.range([cfg.height, 0]);
 
       var xAxis = d3.axisBottom(x.nice())
@@ -346,7 +325,7 @@
 
     function showLabel(d) {
       var coords = [d3.event.clientX, d3.event.clientY];
-      var top = coords[1] + 30,
+      var top = coords[1] + 550,
           left = coords[0] - 50;
 
       div.transition()
@@ -354,7 +333,7 @@
         .style("opacity", 1);
 
       div.html("<b>" + d.name + "</b></br>" +
-              "Enrollment: " + d3.format(",")(uniLookup[d.name].enrollment) + "</br>")
+        "Freshman enrollment: " + d3.format(",")(uniLookup[d.name].total) + "</br>")
       	.style("top", top + "px")
       	.style("left", left + "px");
     }
@@ -362,7 +341,7 @@
     function moveLabel() {
       var coords = [d3.event.clientX, d3.event.clientY];
 
-      var top = coords[1] + 30,
+      var top = coords[1] + 550,
           left = coords[0] - 50;
 
       div.style("top", top + "px")
