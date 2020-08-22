@@ -193,9 +193,9 @@
 "University of Illinois Urbana-Champaign",
 "UT Austin"],
       dotClassName: "dot1",
-      title: "Ratio of URM in state to incoming freshman class",
+      title: "Ratio of URM in graduating high school seniors to incoming college freshmen",
       subtitle: "",
-      xLabel: "URM as percentage of graduating seniors",
+      xLabel: "URM as percentage of graduating high school seniors in state",
       tickSize: 0,
       domainOpacity: 0,
       xAxisOffset: 10,
@@ -300,7 +300,7 @@
         .attr("dy", -50)
         .attr("dx", -cfg.height/2 + 30)
         .attr("transform", "rotate(-90)")
-      	.text("URM percentage in freshman class");
+      	.text("URM as percentage of freshman class");
 
       var yAxis = d3.axisLeft(y.nice())
       	.ticks(cfg.yTicks)
@@ -399,7 +399,7 @@
       div.html("<b>" + d.name + "</b></br>" +
         "Freshman enrollment: " + d3.format(",")(uniLookup[d.name].total) + "</br>" +
         "URM % of graduating seniors: " + formatPercent(uniLookup[d.name].state) + "</br>" +
-        "URM % of incoming freshman: " + formatPercent(uniLookup[d.name].enroll)
+        "URM % of incoming freshmen: " + formatPercent(uniLookup[d.name].enroll)
       )
       	.style("top", top + "px")
       	.style("left", left + "px");

@@ -97,7 +97,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
 
   // Compute the minimum and maximum date, and the maximum price.
   x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
-  y.domain([0, 0.6]).nice();
+  y.domain([0.2, 0.6]).nice();
 
   // Add an svg2 element with the desired dimensions and margin.
   var svg2 = d3.select("#line_enroll").append("svg")
