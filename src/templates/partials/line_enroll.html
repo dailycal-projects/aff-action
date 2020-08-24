@@ -116,7 +116,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
   // Add the x-axis.
   svg2.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height + 10) + ")")
       .call(xAxis);
 
   // Add the y-axis.

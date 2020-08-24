@@ -47,7 +47,7 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var margin = {top: 80, right: 180, bottom: 20, left: 80},
+var margin = {top: 80, right: 180, bottom: 40, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -138,7 +138,7 @@ d3.csv("retention_data.csv", function(error, data) {
   // Add the x-axis.
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height + 10) + ")")
       .call(xAxis);
 
   // Add the y-axis.
@@ -276,7 +276,7 @@ legend.append("text")
       })
       .on('mouseover', function() { // on mouse in show line, circles and text
         d3.select(".mouse-line")
-          .style("opacity", "1");
+          .style("opacity", "0.2");
         d3.selectAll(".mouse-per-line circle")
           .style("opacity", "1");
         d3.selectAll(".mouse-per-line text")
@@ -291,7 +291,8 @@ legend.append("text")
             var d = "M" + mouse[0] + "," + height;
             d += " " + mouse[0] + "," + 0;
             return d;
-          });
+          })
+        ;
 
         d3.selectAll(".mouse-per-line")
           .attr("transform", function(d, i) {

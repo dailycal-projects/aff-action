@@ -130,7 +130,7 @@ d3.csv("retention_data.csv", function(error, data) {
   // Add the x-axis.
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height + 10) + ")")
       .call(xAxis);
 
   // Add the y-axis.
