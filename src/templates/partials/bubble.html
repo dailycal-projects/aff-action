@@ -12,13 +12,13 @@
     div.tooltip{
       position: absolute;
       text-align: left;
-      padding: 5px;
+      padding: 12px;
       font: 12px benton-sans;
       background-color: white;
       border: 1px #b7b7b7 solid;
       pointer-events: none;
       width: 230px;
-      height: 100px;
+      height: 110px;
 
     }
 
@@ -396,7 +396,7 @@
         .duration(200)
         .style("opacity", 1);
 
-      div.html("<b>" + d.name + "</b></br>" +
+      div.html("<b>" + d.name + "</b></br></br>" +
         "Freshman enrollment: " + d3.format(",")(uniLookup[d.name].total) + "</br>" +
         "URM % of graduating seniors: " + formatPercent(uniLookup[d.name].state) + "</br>" +
         "URM % of incoming freshmen: " + formatPercent(uniLookup[d.name].enroll)
