@@ -74,29 +74,26 @@ d3.csv("berkeley_app.csv", function(error, data) {
       d = type(d);
   });
 
-  console.log(data);
-  console.log(parse(data[0].date));
-
-  var berk_w = data.filter(function(d) {
+  var berk_w_app = data.filter(function(d) {
     return d.symbol == "Applicants-White";
   });
 
-  var berk_ap = data.filter(function(d) {
+  var berk_ap_app = data.filter(function(d) {
     return d.symbol == "Applicants-Asian";
   });
 
-  var berk_h = data.filter(function(d) {
+  var berk_h_app = data.filter(function(d) {
     return d.symbol == 'Applicants-Chicano/Latino';
   });
-  var berk_ai = data.filter(function(d) {
+  var berk_ai_app = data.filter(function(d) {
     return d.symbol == 'Applicants-American Indian';
   });
-  var berk_aa = data.filter(function(d) {
+  var berk_aa_app = data.filter(function(d) {
     return d.symbol == 'Applicants-African American';
   });
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
+  x.domain([berk_aa_app[0].date, berk_aa_app[berk_aa_app.length - 1].date]);
   y.domain([0, 40000]).nice();
 
   // Add an svg element with the desired dimensions and margin.
@@ -127,7 +124,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
 
   var colors = d3.scaleOrdinal().domain(['Applicants-African American', 'Applicants-Chicano/Latino', 'Applicants-American Indian', 'Applicants-White', 'Applicants-Asian']).range(d3.schemeCategory10);
   svg.selectAll('.line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_app, berk_h_app, berk_ai_app,berk_w_app, berk_ap_app])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -153,7 +150,7 @@ var legend = svg.append("g")
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_app, berk_h_app, berk_ai_app,berk_w_app, berk_ap_app])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -211,10 +208,10 @@ legend.append("text")
     guideline.attr('stroke-width', this.checked ? 1 : 0);
     curtain.attr("opacity", this.checked ? 0.75 : 1);
   })
-   var mouseG = svg.append("g")
+   var mouseG2 = svg.append("g")
       .attr("class", "mouse-over-effects");
 
-    mouseG.append("path") // this is the black vertical line to follow mouse
+    mouseG2.append("path") // this is the black vertical line to follow mouse
       .attr("class", "mouse-line")
       .style("stroke", "black")
       .style("stroke-width", "1px")
@@ -222,13 +219,13 @@ legend.append("text")
 
     var lines = document.getElementsByClassName('line');
 
-    var mousePerLine = mouseG.selectAll('.mouse-per-line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    var mousePerLine2 = mouseG2.selectAll('.mouse-per-line')
+    .data([berk_aa_app, berk_h_app, berk_ai_app,berk_w_app, berk_ap_app])
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
 
-    mousePerLine.append("circle")
+    mousePerLine2.append("circle")
       .attr("r", 7)
       .style("stroke", function(d) {
         return colors(d[0].symbol);
@@ -237,10 +234,10 @@ legend.append("text")
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text")
+    mousePerLine2.append("text")
       .attr("transform", "translate(10,3)");
 
-    mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+    mouseG2.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
       .attr('height', height)
       .attr('fill', 'none')

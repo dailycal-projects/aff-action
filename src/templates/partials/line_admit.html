@@ -42,8 +42,8 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
 var parse = d3.timeParse("%Y");
 
@@ -77,26 +77,26 @@ d3.csv("berkeley_app.csv", function(error, data) {
   console.log(data);
   console.log(parse(data[0].date));
 
-  var berk_w = data.filter(function(d) {
+  var berk_w_admit = data.filter(function(d) {
     return d.symbol == "Admits-White";
   });
 
-  var berk_ap = data.filter(function(d) {
+  var berk_ap_admit = data.filter(function(d) {
     return d.symbol == "Admits-Asian";
   });
 
-  var berk_h = data.filter(function(d) {
+  var berk_h_admit = data.filter(function(d) {
     return d.symbol == 'Admits-Chicano/Latino';
   });
-  var berk_ai = data.filter(function(d) {
+  var berk_ai_admit = data.filter(function(d) {
     return d.symbol == 'Admits-American Indian';
   });
-  var berk_aa = data.filter(function(d) {
+  var berk_aa_admit = data.filter(function(d) {
     return d.symbol == 'Admits-African American';
   });
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
+  x.domain([berk_aa_admit[0].date, berk_aa_admit[berk_aa_admit.length - 1].date]);
   y.domain([0, 0.8]).nice();
 
   // Add an svg element with the desired dimensions and margin.
@@ -127,7 +127,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
 
   var colors = d3.scaleOrdinal().domain(['Admits-African American', 'Admits-Chicano/Latino', 'Admits-American Indian', 'Admits-White', 'Admits-Asian']).range(d3.schemeCategory10);
   svg.selectAll('.line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_admit, berk_h_admit, berk_ai_admit,berk_w_admit, berk_ap_admit])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -153,7 +153,7 @@ var legend = svg.append("g")
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_admit, berk_h_admit, berk_ai_admit,berk_w_admit, berk_ap_admit])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -212,10 +212,10 @@ legend.append("text")
     curtain.attr("opacity", this.checked ? 0.75 : 1);
   })
 
-   var mouseG = svg.append("g")
+   var mouseG3 = svg.append("g")
       .attr("class", "mouse-over-effects");
 
-    mouseG.append("path") // this is the black vertical line to follow mouse
+    mouseG3.append("path") // this is the black vertical line to follow mouse
       .attr("class", "mouse-line")
       .style("stroke", "black")
       .style("stroke-width", "1px")
@@ -223,13 +223,13 @@ legend.append("text")
 
     var lines = document.getElementsByClassName('line');
 
-    var mousePerLine = mouseG.selectAll('.mouse-per-line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    var mousePerLine3 = mouseG3.selectAll('.mouse-per-line')
+    .data([berk_aa_admit, berk_h_admit, berk_ai_admit,berk_w_admit, berk_ap_admit])
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
 
-    mousePerLine.append("circle")
+    mousePerLine3.append("circle")
       .attr("r", 7)
       .style("stroke", function(d) {
         return colors(d[0].symbol);
@@ -238,10 +238,10 @@ legend.append("text")
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text")
+    mousePerLine3.append("text")
       .attr("transform", "translate(10,3)");
 
-    mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+    mouseG3.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
       .attr('height', height)
       .attr('fill', 'none')
@@ -266,6 +266,8 @@ legend.append("text")
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
+        mouse[0] = d3.event.pageX;
+        mouse[1] = d3.event.pageY;
         d3.select(".mouse-line")
           .attr("d", function() {
             var d = "M" + mouse[0] + "," + height;

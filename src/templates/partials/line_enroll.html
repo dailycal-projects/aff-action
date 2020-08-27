@@ -77,26 +77,26 @@ d3.csv("berkeley_app.csv", function(error, data) {
   console.log(data);
   console.log(parse(data[0].date));
 
-  var berk_w = data.filter(function(d) {
+  var berk_w_enroll = data.filter(function(d) {
     return d.symbol == "Enrollees-White";
   });
 
-  var berk_ap = data.filter(function(d) {
+  var berk_ap_enroll = data.filter(function(d) {
     return d.symbol == "Enrollees-Asian";
   });
 
-  var berk_h = data.filter(function(d) {
+  var berk_h_enroll = data.filter(function(d) {
     return d.symbol == 'Enrollees-Chicano/Latino';
   });
   var berk_ai = data.filter(function(d) {
     return d.symbol == 'Enrollees-American Indian';
   });
-  var berk_aa = data.filter(function(d) {
+  var berk_aa_enroll = data.filter(function(d) {
     return d.symbol == 'Enrollees-African American';
   });
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
+  x.domain([berk_aa_enroll[0].date, berk_aa_enroll[berk_aa_enroll.length - 1].date]);
   y.domain([0.2, 0.6]).nice();
 
   // Add an svg2 element with the desired dimensions and margin.
@@ -127,7 +127,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
 
   var colors = d3.scaleOrdinal().domain(['Enrollees-African American', 'Enrollees-Chicano/Latino', 'Enrollees-American Indian', 'Enrollees-White', 'Enrollees-Asian']).range(d3.schemeCategory10);
   svg2.selectAll('.line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_enroll, berk_h_enroll, berk_ai,berk_w_enroll, berk_ap_enroll])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -152,7 +152,7 @@ var legend = svg2.append("g")
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_enroll, berk_h_enroll, berk_ai,berk_w_enroll, berk_ap_enroll])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });

@@ -83,42 +83,42 @@ d3.csv("retention_data.csv", function(error, data) {
   console.log(data);
   console.log(parse(data[0].date));
 
-  var berk_aa = data.filter(function(d) {
+  var berk_aa_grad = data.filter(function(d) {
     return d.symbol == "berk-aa";
   });
 
-  var all_aa = data.filter(function(d) {
+  var all_aa_grad = data.filter(function(d) {
     return d.symbol == "all-aa";
   });
 
-  var berk_h = data.filter(function(d) {
+  var berk_h_grad = data.filter(function(d) {
     return d.symbol == 'berk-h';
   });
-  var all_h = data.filter(function(d) {
+  var all_h_grad = data.filter(function(d) {
     return d.symbol == 'all-h';
   });
-  var berk_ai = data.filter(function(d) {
+  var berk_ai_grad = data.filter(function(d) {
     return d.symbol == 'berk-ai';
   });
-  var all_ai = data.filter(function(d) {
+  var all_ai_grad = data.filter(function(d) {
     return d.symbol == 'all-ai';
   });
-  var berk_ap = data.filter(function(d) {
+  var berk_ap_grad = data.filter(function(d) {
     return d.symbol == 'berk-ap';
   });
-  var all_ap = data.filter(function(d) {
+  var all_ap_grad = data.filter(function(d) {
     return d.symbol == 'all-ap';
   });
-  var berk_w = data.filter(function(d) {
+  var berk_w_grad = data.filter(function(d) {
     return d.symbol == 'berk-w';
   });
-  var all_w = data.filter(function(d) {
+  var all_w_grad = data.filter(function(d) {
     return d.symbol == 'all-w';
   });
 
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
+  x.domain([berk_aa_grad[0].date, berk_aa_grad[berk_aa_grad.length - 1].date]);
   y.domain([0.6, 1]).nice();
 
   // Add an SVG element with the desired dimensions and margin.
@@ -149,7 +149,7 @@ d3.csv("retention_data.csv", function(error, data) {
 
   var colors = d3.scaleOrdinal().domain(['all-aa', 'all-h', 'all-ai', 'all-w', 'all-ap']).range(d3.schemeCategory10);
   svg.selectAll('.line')
-    .data([all_aa, all_h, all_ai, all_w, all_ap])
+    .data([all_aa_grad, all_h_grad, all_ai_grad, all_w_grad, all_ap_grad])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -174,7 +174,7 @@ var legend = svg.append("g")
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([all_aa, all_h, all_ai, all_w, all_ap])
+    .data([all_aa_grad, all_h_grad, all_ai_grad, all_w_grad, all_ap_grad])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -243,13 +243,13 @@ legend.append("text")
 
     var lines = document.getElementsByClassName('line');
 
-    var mousePerLine = mouseG.selectAll('.mouse-per-line')
-      .data([all_aa, all_h, all_ai, all_w, all_ap])
+    var mousePerLine1 = mouseG.selectAll('.mouse-per-line')
+      .data([all_aa_grad, all_h_grad, all_ai_grad, all_w_grad, all_ap_grad])
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
 
-    mousePerLine.append("circle")
+    mousePerLine1.append("circle")
       .attr("r", 7)
       .style("stroke", function(d) {
         return colors(d[0].symbol);
@@ -258,14 +258,14 @@ legend.append("text")
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text")
+    mousePerLine1.append("text")
       .attr("transform", "translate(10,3)");
 
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
       .attr('height', height)
-      .attr('fill', 'none')
-      .attr('pointer-events', 'all')
+    .attr('fill', 'none')
+    .attr('pointer-events', 'all')
       .on('mouseout', function() { // on mouse out hide line, circles and text
         d3.select(".mouse-line")
           .style("opacity", "0");
@@ -297,10 +297,6 @@ legend.append("text")
         d3.selectAll(".mouse-per-line")
           .attr("transform", function(d, i) {
             console.log(width/mouse[0])
-            var xDate = x.invert(mouse[0]),
-                bisect = d3.bisector(function(d) { return d.date; }).right;
-                idx = bisect(d.values, xDate);
-
             var beginning = 0,
                 end = lines[i].getTotalLength(),
                 target = null;

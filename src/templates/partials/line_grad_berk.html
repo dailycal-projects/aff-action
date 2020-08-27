@@ -74,43 +74,26 @@ d3.csv("retention_data.csv", function(error, data) {
       d = type(d);
   });
 
-  var berk_aa = data.filter(function(d) {
+  var berk_aa_grad = data.filter(function(d) {
     return d.symbol == "berk-aa";
   });
 
-  var all_aa = data.filter(function(d) {
-    return d.symbol == "all-aa";
-  });
-
-  var berk_h = data.filter(function(d) {
+  var berk_h_grad = data.filter(function(d) {
     return d.symbol == 'berk-h';
   });
-  var all_h = data.filter(function(d) {
-    return d.symbol == 'all-h';
-  });
-  var berk_ai = data.filter(function(d) {
+  var berk_ai_grad = data.filter(function(d) {
     return d.symbol == 'berk-ai';
   });
-  var all_ai = data.filter(function(d) {
-    return d.symbol == 'all-ai';
-  });
-  var berk_ap = data.filter(function(d) {
+  var berk_ap_grad = data.filter(function(d) {
     return d.symbol == 'berk-ap';
   });
-  var all_ap = data.filter(function(d) {
-    return d.symbol == 'all-ap';
-  });
-  var berk_w = data.filter(function(d) {
+  var berk_w_grad = data.filter(function(d) {
     return d.symbol == 'berk-w';
   });
-  var all_w = data.filter(function(d) {
-    return d.symbol == 'all-w';
-  });
-  console.log(all_w);
 
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa[0].date, berk_aa[berk_aa.length - 1].date]);
+  x.domain([berk_aa_grad[0].date, berk_aa_grad[berk_aa_grad.length - 1].date]);
   y.domain([0.6, 1]).nice();
 
   // Add an SVG element with the desired dimensions and margin.
@@ -142,7 +125,7 @@ d3.csv("retention_data.csv", function(error, data) {
   var colors = d3.scaleOrdinal().domain(['berk-aa', 'berk-h', 'berk-ai', 'berk-w', 'berk-ap']).range(d3.schemeCategory10);
   //var colors = d3.scaleOrdinal().range([ "#ED9791", "#215775", "#479BD1", "#479BD1", "#479BD1", "#479BD1", "#479BD1"]);
   svg.selectAll('.line')
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_grad, berk_h_grad, berk_ai_grad,berk_w_grad, berk_ap_grad])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -166,7 +149,7 @@ var legend = svg.append("g")
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([berk_aa, berk_h, berk_ai,berk_w, berk_ap])
+    .data([berk_aa_grad, berk_h_grad, berk_ai_grad,berk_w_grad, berk_ap_grad])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
