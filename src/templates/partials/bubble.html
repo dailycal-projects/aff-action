@@ -362,7 +362,7 @@
             	.raise()
             	.transition()
             	.style("stroke-width", 1.5);
-            showLabel(d);
+            showLabel(d, labels);
           })
       		.on("mousemove", moveLabel)
       		.on("mouseout", function(d) {
@@ -374,12 +374,13 @@
           })
 
       var labels = plot.append("g")
+        .attr("class", "dot-labels")
       	.selectAll("text")
       	.data(data.filter(function(a) {
           return cfg.labelsToShow.includes(a.name);
         }))
       	.enter().append("text")
-      		.attr("class", "dot-label")
+          .attr("class", d => d.class)
           .attr("x", d => labelPosX(d, x))
           .attr("y", d => labelPosY(d, y))
       		.attr("text-anchor", "middle")
@@ -387,7 +388,7 @@
       		.text(d => d.name)
     }
 
-    function showLabel(d) {
+    function showLabel(d, labels) {
       var coords = [d3.event.pageX, d3.event.pageY];
       var top = coords[1] + 30,
           left = coords[0] - 50;
@@ -395,6 +396,9 @@
       div.transition()
         .duration(200)
         .style("opacity", 1);
+
+      d3.selectAll('.dot-labels').selectAll(`text`).transition().style("fill", "#D3D3D3");
+      d3.selectAll('.dot-labels').selectAll(`text.${d.class}`).transition().style("fill", "black");
 
       div.html("<b>" + d.name + "</b></br></br>" +
         "Freshman enrollment: " + d3.format(",")(uniLookup[d.name].total) + "</br>" +
@@ -416,6 +420,7 @@
     }
 
     function hideLabel(d) {
+    d3.selectAll('.dot-labels').selectAll(`text`).transition().style("fill", "black");
     	div.transition()
         .duration(200)
         .style("opacity", 0);
