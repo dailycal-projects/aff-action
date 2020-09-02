@@ -42,21 +42,21 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-y_app = d3.scaleLinear().range([height, 0]),
-yAxis_app = d3.axisLeft(y_app).tickArguments(4);
+y = d3.scaleLinear().range([height, 0]),
+yAxis_app = d3.axisLeft(y).tickArguments(4);
 
 // An area generator, for the light fill.
 var area = d3.area()
     .curve(d3.curveMonotoneX)
     .x(function(d) { return x(d.date); })
     .y0(height)
-    .y1(function(d) { return y_app(d.price); });
+    .y1(function(d) { return y(d.price); });
 
 // A line generator, for the dark stroke.
 var line = d3.line()
     .curve(d3.curveMonotoneX)
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y_app(d.price); });
+    .y(function(d) { return y(d.price); });
 
 //data = d3.csvParse(d3.select("pre#data").text());
 d3.csv("berkeley_app.csv", function(error, data) {
@@ -87,7 +87,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
 
   // Compute the minimum and maximum date, and the maximum price.
   x.domain([berk_aa_app[0].date, berk_aa_app[berk_aa_app.length - 1].date]);
-  y_app.domain([0, 40000]).nice();
+  y.domain([0, 40000]).nice();
 
   // Add an svg_app element with the desired dimensions and margin.
   var svg_app = d3.select("#line_app").append("svg")
@@ -288,8 +288,9 @@ legend.append("text")
               else break; //position found
             }
 
+            y.domain([0, 40000]).nice();
             d3.select(this).select('text')
-              .text(d3.format(',')(y_app.invert(pos.y).toFixed(0)));
+              .text(d3.format(',')(y.invert(pos.y).toFixed(0)));
 
             return "translate(" + mouse[0] + "," + pos.y +")";
           });

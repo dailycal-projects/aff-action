@@ -286,6 +286,7 @@ legend.append("text")
               else break; //position found
             }
 
+            y.domain([0, 0.8]).nice();
             d3.select(this).select('text')
               .text(y.invert(pos.y).toFixed(2));
 

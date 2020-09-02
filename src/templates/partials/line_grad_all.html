@@ -319,6 +319,7 @@ d3.csv("retention_data.csv", function(error, data) {
               else break; //position found
             }
 
+            y.domain([0.6, 1])
             d3.select(this).select('text')
               .text(y.invert(pos.y).toFixed(2));
 
