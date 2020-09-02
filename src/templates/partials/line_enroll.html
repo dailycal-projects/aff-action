@@ -42,17 +42,7 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var parse = d3.timeParse("%Y");
-
 // Scales and axes. Note the inverted domain for the y-scale: bigger is up!
-var x = d3.scaleTime().range([0, width]),
-    y = d3.scaleLinear().range([height, 0]),
-    xAxis = d3.axisBottom(x).tickSize(-height),
-    yAxis = d3.axisLeft(y).tickArguments(4);
-
 // An area generator, for the light fill.
 var area = d3.area()
     .curve(d3.curveMonotoneX)
@@ -74,8 +64,6 @@ d3.csv("berkeley_app.csv", function(error, data) {
       d = type(d);
   });
 
-  console.log(data);
-  console.log(parse(data[0].date));
 
   var berk_w_enroll = data.filter(function(d) {
     return d.symbol == "Enrollees-White";
@@ -88,7 +76,7 @@ d3.csv("berkeley_app.csv", function(error, data) {
   var berk_h_enroll = data.filter(function(d) {
     return d.symbol == 'Enrollees-Chicano/Latino';
   });
-  var berk_ai = data.filter(function(d) {
+  var berk_ai_enroll = data.filter(function(d) {
     return d.symbol == 'Enrollees-American Indian';
   });
   var berk_aa_enroll = data.filter(function(d) {
@@ -99,35 +87,35 @@ d3.csv("berkeley_app.csv", function(error, data) {
   x.domain([berk_aa_enroll[0].date, berk_aa_enroll[berk_aa_enroll.length - 1].date]);
   y.domain([0.2, 0.6]).nice();
 
-  // Add an svg2 element with the desired dimensions and margin.
-  var svg2 = d3.select("#line_enroll").append("svg")
+  // Add an svg_enroll element with the desired dimensions and margin.
+  var svg_enroll = d3.select("#line_enroll").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
   // Add the clip path.
-  svg2.append("clipPath")
+  svg_enroll.append("clipPath")
       .attr("id", "clip")
     .append("rect")
       .attr("width", width)
       .attr("height", height);
 
   // Add the x-axis.
-  svg2.append("g")
+  svg_enroll.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + (height + 10) + ")")
       .call(xAxis);
 
   // Add the y-axis.
-  svg2.append("g")
+  svg_enroll.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(" + width + ",0)")
       .call(yAxis);
 
   var colors = d3.scaleOrdinal().domain(['Enrollees-African American', 'Enrollees-Chicano/Latino', 'Enrollees-American Indian', 'Enrollees-White', 'Enrollees-Asian']).range(d3.schemeCategory10);
-  svg2.selectAll('.line')
-    .data([berk_aa_enroll, berk_h_enroll, berk_ai,berk_w_enroll, berk_ap_enroll])
+  svg_enroll.selectAll('.line')
+    .data([berk_aa_enroll, berk_h_enroll, berk_ai_enroll,berk_w_enroll, berk_ap_enroll])
     .enter()
       .append('path')
         .attr('class', 'line')
@@ -139,20 +127,20 @@ d3.csv("berkeley_app.csv", function(error, data) {
           return line(d);
         })
 
-var title = svg2.append("g")
+var title = svg_enroll.append("g")
       	.attr("transform", "translate(" + [width / 2, -50] + ") ")
 
 title.append("text")
       	.attr("class", "title")
       	.attr("text-anchor", "middle")
-      	.text("Enrollment rates to UC Berkeley by ethnicity")
-var legend = svg2.append("g")
+      	.text("Yield rates to UC Berkeley by ethnicity")
+var legend = svg_enroll.append("g")
     .style("font-family", "benton-sans")
     .style("font-size", 16)
     .attr("text-anchor", "start")
     .attr('transform', "translate(" + (width) + ",0)")
   .selectAll("g")
-    .data([berk_aa_enroll, berk_h_enroll, berk_ai,berk_w_enroll, berk_ap_enroll])
+    .data([berk_aa_enroll, berk_h_enroll, berk_ai_enroll,berk_w_enroll, berk_ap_enroll])
   .enter().append("g")
      .attr("class", "legend")
     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -170,7 +158,7 @@ legend.append("text")
     .text(function(d) { return d; });
 
   /* Add 'curtain' rectangle to hide entire graph */
-  var curtain = svg2.append('rect')
+  var curtain = svg_enroll.append('rect')
     .attr('x', -1 * width)
     .attr('y', -1 * height)
     .attr('height', height)
@@ -178,9 +166,9 @@ legend.append("text")
     .attr('class', 'curtain')
     .attr('transform', 'rotate(180)')
     .style('fill', '#ffffff');
-    
+
   /* Optionally add a guideline */
-  var guideline = svg2.append('line')
+  var guideline = svg_enroll.append('line')
     .attr('stroke', '#333')
     .attr('stroke-width', 0)
     .attr('class', 'guide')
@@ -188,9 +176,9 @@ legend.append("text")
     .attr('y1', 1)
     .attr('x2', 1)
     .attr('y2', height)
-    
+
   /* Create a shared transition for anything we're animating */
-  var t = svg2.transition()
+  var t = svg_enroll.transition()
     .delay(750)
     .duration(6000)
     .ease(d3.easeLinear)
@@ -200,7 +188,7 @@ legend.append("text")
         .style('opacity', 0)
         .remove()
     });
-  
+
   t.select('rect.curtain')
     .attr('width', 0);
   t.select('line.guide')
@@ -210,7 +198,101 @@ legend.append("text")
     guideline.attr('stroke-width', this.checked ? 1 : 0);
     curtain.attr("opacity", this.checked ? 0.75 : 1);
   })
+  var mouseG_enroll = svg_enroll.append("g")
+    .attr("class", "mouse-over-effects")
+      .attr('width', width) // can't catch mouse events on a g element
+      .attr('height', height);
 
+  mouseG_enroll.append("path") // this is the black vertical line to follow mouse
+    .attr("class", "mouse-line-enroll")
+    .style("stroke", "black")
+    .style("stroke-width", "1px")
+      .style("opacity", "0");
+
+    var lines = document.getElementsByClassName('line');
+
+    var mousePerLine_enroll = mouseG_enroll.selectAll('.mouse-per-line')
+    .data([berk_aa_enroll, berk_h_enroll, berk_ai_enroll,berk_w_enroll, berk_ap_enroll])
+      .enter()
+      .append("g")
+      .attr("class", "mouse-per-line");
+
+    mousePerLine_enroll.append("circle")
+      .attr("r", 7)
+      .style("stroke", function(d) {
+        return colors(d[0].symbol);
+      })
+      .style("fill", "none")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
+
+    mousePerLine_enroll.append("text")
+      .attr("transform", "translate(10,3)");
+
+    var rectG_enroll = mouseG_enroll.append('svg_enroll:rect') // append a rect to catch mouse movements on canvas
+      .attr('width', width) // can't catch mouse events on a g element
+      .attr('height', height)
+    .attr('fill', 'none')
+    .attr('pointer-events', 'all');
+
+  rectG_enroll
+      .on('mouseout', function() { // on mouse out hide line, circles and text
+        d3.select(".mouse-line-enroll")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "0");
+      })
+      .on('mouseover', function() { // on mouse in show line, circles and text
+        d3.select(".mouse-line-enroll")
+          .style("opacity", "0.2");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "1");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "1")
+          .style("font-size", "14px")
+          .style("font-family", "benton-sans-med");
+      })
+      .on('mousemove', mousemove);
+    function mousemove(d, i) {
+        var mouse = d3.mouse(this);
+        if (pageWidth < 900) {mouse[0] = mouse[0] ** 1.075}
+        if (pageWidth < 600) {mouse[0] = mouse[0] ** 1.023}
+        if (pageWidth < 520) {mouse[0] = mouse[0] ** 1.049}
+        if (pageWidth < 420) {mouse[0] = mouse[0] ** 1.043}
+        if (mouse[0] < width) {
+        d3.select(".mouse-line-enroll")
+          .attr("d", function() {
+            var d = "M" + mouse[0] + "," + height;
+            d += " " + mouse[0] + "," + 0;
+            return d;
+          })
+        ;
+
+        d3.selectAll(".mouse-per-line")
+          .attr("transform", function(d, i) {
+            var beginning = 0,
+                end = lines[i].getTotalLength(),
+                target = null;
+            while (true){
+              target = Math.floor((beginning + end) / 2);
+              pos = lines[i].getPointAtLength(target);
+              if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+                  break;
+              }
+              if (pos.x > mouse[0])      end = target;
+              else if (pos.x < mouse[0]) beginning = target;
+              else break; //position found
+            }
+
+            d3.select(this).select('text')
+              .text(y.invert(pos.y).toFixed(2));
+
+            return "translate(" + mouse[0] + "," + pos.y +")";
+          });
+      }
+}
 });
 
 // Parse dates and numbers. We assume values are sorted by date.
@@ -220,4 +302,6 @@ function type(d) {
   return d;
 }
 
+function getPage() {pageWidth = $(window).width()}
+window.addEventListener("resize", getPage);
 </script>

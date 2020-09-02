@@ -130,6 +130,12 @@ h4 {
 
 @media screen and (max-width: 500px) {
   svg {
+    zoom: 0.5;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  svg {
     zoom: 0.39;
   }
 }

@@ -75,11 +75,11 @@
     var margin_bubble = {top: 120, right: 75, bottom: 125, left: 200};
 
     var width = 960 - margin_bubble.left - margin_bubble.right,
-    		height = 800 - margin_bubble.top - margin_bubble.bottom;
+    		height_bubble = 800 - margin_bubble.top - margin_bubble.bottom;
 
     var svg = d3.select("#bubble").append("svg")
           .attr("width", width + margin_bubble.left + margin_bubble.right)
-          .attr("height", height + margin_bubble.top + margin_bubble.bottom)
+          .attr("height", height_bubble + margin_bubble.top + margin_bubble.bottom)
         .append("g")
           .attr("transform", "translate(" + margin_bubble.left + "," + margin_bubble.top + ")");
 
@@ -179,7 +179,7 @@
       top: 0,
       left: 0,
       width: 600,
-      height: height,
+      height_bubble: height_bubble,
       labelsToShow: ["University of Michigan", "UC Berkeley", "UCLA", "University of Virginia",
         "Georgia Tech",
 "UNC Chapel Hill",
@@ -270,10 +270,10 @@
       plot.append("rect")
       	.attr("class", "chart-background")
       	.attr("width", cfg.width)
-      	.attr("height", cfg.height);
+      	.attr("height", cfg.height_bubble);
 
       x.range([0, cfg.width]);
-      y.range([cfg.height, 0]);
+      y.range([cfg.height_bubble, 0]);
 
       var xAxis = d3.axisBottom(x.nice())
       	.ticks(cfg.xTicks)
@@ -281,7 +281,7 @@
       	.tickFormat(xFormat);
 
       var xAxisGroup = plot.append("g")
-      	.attr("transform", "translate(" + [0, cfg.height + cfg.xAxisOffset] + ")")
+      	.attr("transform", "translate(" + [0, cfg.height_bubble + cfg.xAxisOffset] + ")")
       	.call(xAxis);
 
      	xAxisGroup.select(".domain").style("opacity", cfg.domainOpacity);
@@ -290,7 +290,7 @@
       	.append("text")
       	.attr("class", "axis-label")
       	.attr("text-anchor", "middle")
-      	.attr("transform", "translate(" + [cfg.width / 2, cfg.height + 60] +")")
+      	.attr("transform", "translate(" + [cfg.width / 2, cfg.height_bubble + 60] +")")
       	.text(cfg.xLabel);
 
       var yLabel = plot.append("g")
@@ -298,7 +298,7 @@
       	.attr("class", "axis-label")
       	.attr("text-anchor", "middle")
         .attr("dy", -50)
-        .attr("dx", -cfg.height/2 + 30)
+        .attr("dx", -cfg.height_bubble/2 + 30)
         .attr("transform", "rotate(-90)")
       	.text("URM as percentage of freshman class");
 
@@ -335,7 +335,7 @@
       		.attr("x1", d => x(d))
       		.attr("y1", d => 0)
       		.attr("x2", d => x(d))
-      		.attr("y2", d => cfg.height);
+      		.attr("y2", d => cfg.height_bubble);
 
       var gridLinesY = plot.append("g")
       	.selectAll("line")
