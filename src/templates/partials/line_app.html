@@ -298,11 +298,12 @@ legend.append("text")
               else if (pos.x < mouse[0]) beginning = target;
               else break; //position found
             }
-            nums = d.map(function(x){return x.price;});
 
+            dates = d.map(function(x){return x.date;});
+            x.domain([berk_aa_app[0].date, berk_aa_app[berk_aa_app.length - 1].date]);
             y.domain([0, 40000]).nice();
             d3.select(this).select('text')
-              .text(get_closest(y.invert(pos.y), nums).toFixed(0));
+            .text(d3.format(',')(d.filter(function (d){return d.date == get_closest(x.invert(pos.x), dates)})[0].price))
 
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
