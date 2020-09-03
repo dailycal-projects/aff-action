@@ -47,20 +47,6 @@ path.area {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-let pageWidth = $(window).width();
-
-var margin = {top: 80, right: 180, bottom: 40, left: 80},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var parse = d3.timeParse("%Y");
-
-// Scales and axes. Note the inverted domain for the y-scale: bigger is up!
-var x = d3.scaleTime().range([0, width]),
-  y = d3.scaleLinear().range([height, 0]),
-  xAxis = d3.axisBottom(x).tickSize(-height),
-  yAxis = d3.axisLeft(y).tickArguments(4);
-
 // An area generator, for the light fill.
 var area = d3.area()
   .curve(d3.curveMonotoneX)
