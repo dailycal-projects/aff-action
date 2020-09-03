@@ -109,7 +109,7 @@ d3.csv("retention_data.csv", function(error, data) {
 
 
   // Compute the minimum and maximum date, and the maximum price.
-  x.domain([berk_aa_grad[0].date, berk_aa_grad[berk_aa_grad.length - 1].date]);
+  x.domain([berk_aa_grad[0].date, berk_aa_grad[berk_aa_grad.length- 1].date]);
   y.domain([0.6, 1]).nice();
 
   // Add an svg_grad_berk element with the desired dimensions and margin.
@@ -311,10 +311,11 @@ d3.csv("retention_data.csv", function(error, data) {
               else if (pos.x < mouse[0]) beginning = target;
               else break; //position found
             }
+            nums = d.map(function(x){return x.price;});
 
             y.domain([0.6, 1]).nice();
             d3.select(this).select('text')
-              .text(y.invert(pos.y).toFixed(2));
+              .text(get_closest(y.invert(pos.y), nums).toFixed(2));
 
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
@@ -327,6 +328,16 @@ function type(d) {
   d.date = parse(d.date);
   d.price = +d.price;
   return d;
+}
+
+function get_closest(pos, nums) {
+  var min_ = 1e99,
+    xI = null;
+  for (var i = 0; i < nums.length; i++) {
+    var diff = Math.abs(pos - nums[i]);
+    if (diff < min_) {min_ = diff; xI = nums[i];}
+  }
+  return xI
 }
 
 function getPage() {pageWidth = $(window).width()}

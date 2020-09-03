@@ -298,15 +298,16 @@ legend.append("text")
               else if (pos.x < mouse[0]) beginning = target;
               else break; //position found
             }
+            nums = d.map(function(x){return x.price;});
 
             y.domain([0, 40000]).nice();
             d3.select(this).select('text')
-              .text(d3.format(',')(y.invert(pos.y).toFixed(0)));
+              .text(get_closest(y.invert(pos.y), nums).toFixed(0));
 
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       }
-}
+  }
 });
 
 // Parse dates and numbers. We assume values are sorted by date.
@@ -314,6 +315,16 @@ function type(d) {
   d.date = parse(d.date);
   d.price = +d.price;
   return d;
+}
+
+function get_closest(pos, nums) {
+  var min_ = 1e99,
+    xI = null;
+  for (var i = 0; i < nums.length; i++) {
+    var diff = Math.abs(pos - nums[i]);
+    if (diff < min_) {min_ = diff; xI = nums[i];}
+  }
+  return xI
 }
 
 function getPage() {pageWidth = $(window).width()}
