@@ -193,7 +193,7 @@
 "University of Illinois Urbana-Champaign",
 "UT Austin"],
       dotClassName: "dot1",
-      title: "Ratio of URM in graduating high school seniors to incoming college freshmen",
+      title: "Diversity at public universities",
       subtitle: "",
       xLabel: "URM as percentage of graduating high school seniors in state",
       tickSize: 0,
@@ -258,7 +258,7 @@
 
     legendLabel.append("text")
     	.attr("y", 14)
-    	.text("Freshman Enrollment");
+    	.text("Number of freshmen enrolled");
 
     // Draws a scatter plot
     function scatterPlot(data, cfg, x, y, r, xAcc, yAcc, rAcc, xFormat, yFormat) {
@@ -300,7 +300,7 @@
         .attr("dy", -50)
         .attr("dx", -cfg.height_bubble/2 + 30)
         .attr("transform", "rotate(-90)")
-      	.text("URM as percentage of freshman class");
+      	.text("URM as percentage of incoming freshmen class");
 
       var yAxis = d3.axisLeft(y.nice())
       	.ticks(cfg.yTicks)
