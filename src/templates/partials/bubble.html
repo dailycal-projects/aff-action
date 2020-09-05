@@ -398,7 +398,7 @@
         .style("opacity", 1);
 
       d3.selectAll('.dot-labels').selectAll(`text`).transition().style("fill", "#D3D3D3");
-      d3.selectAll('.dot-labels').selectAll(`text.${d.class}`).transition().style("fill", "black");
+      d3.selectAll('.dot-labels').selectAll(`text.${d.class}`).transition().style("fill", "#000000");
 
       div.html("<b>" + d.name + "</b></br></br>" +
         "Freshman enrollment: " + d3.format(",")(uniLookup[d.name].total) + "</br>" +
