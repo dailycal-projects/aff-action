@@ -107,11 +107,6 @@ d3.csv("berkeley_app.csv", function(error, data) {
       .attr("transform", "translate(0," + (height + 10) + ")")
       .call(xAxis);
 
-  // Add the y-axis.
-  svg_enroll.append("g")
-      .attr("class", "y axis")
-      .attr("transform", "translate(" + width + ",0)")
-      .call(yAxis);
 
   var colors = d3.scaleOrdinal().domain(['Enrollees-African American', 'Enrollees-Chicano/Latino', 'Enrollees-American Indian', 'Enrollees-White', 'Enrollees-Asian']).range(d3.schemeCategory10);
   svg_enroll.selectAll('.line')
@@ -167,6 +162,11 @@ legend.append("text")
     .attr('transform', 'rotate(180)')
     .style('fill', '#ffffff');
 
+  // Add the y-axis.
+  svg_enroll.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis);
   /* Optionally add a guideline */
   var guideline = svg_enroll.append('line')
     .attr('stroke', '#333')
