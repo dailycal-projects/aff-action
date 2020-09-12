@@ -169,7 +169,7 @@ d3.csv("retention_data.csv", function(error, data) {
     .attr("opacity", 0.8)
     .style("fill", function(d) { return colors(d[0].symbol); });
   legend.append("text")
-    .data(["African-American", "Latino", "American Indian", "White", "Asian/Pacific Islander"])
+    .data(["African American", "Chicano/Latino", "American Indian", "White", "Asian"])
     .attr("x", 30)
     .attr("y", 9)
     .attr("dy", "0.32em")
