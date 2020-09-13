@@ -16,16 +16,12 @@ path.area {
   shape-rendering: crispEdges;
 }
 
-.x.axis line {
-  stroke: #fff;
+.x.axis text {
+  font-size: 14px;
 }
 
 .x.axis .minor {
   stroke-opacity: .5;
-}
-
-.x.axis path {
-  display: none;
 }
 
 .y.axis line, .y.axis path {
@@ -44,16 +40,18 @@ path.area {
 
 let pageWidth = $(window).width();
 
-var margin = {top: 80, right: 180, bottom: 40, left: 80},
+var margin = {top: 80, right: 180, bottom: 30, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var parse = d3.timeParse("%Y");
 
 // Scales and axes. Note the inverted domain for the y-scale: bigger is up!
+var tickLabels = ["1994", "", "1996", "", "1998", "", "2000", "", "2002", "",
+                  "2004", "", "2006", "", "2008", "", "2010", "", "2012", "", "2014", "", "2016", "", "2018", ""]
 var x = d3.scaleTime().range([0, width]),
   y = d3.scaleLinear().range([height, 0]),
-  xAxis = d3.axisBottom(x).tickSize(-height),
+  xAxis = d3.axisBottom(x).ticks(20).tickSize(6).tickFormat(function(d,i) { return tickLabels[i] });
   yAxis = d3.axisLeft(y).tickArguments(4);
 
 // An area generator, for the light fill.
@@ -117,9 +115,9 @@ d3.csv("berkeley_app.csv", function(error, data) {
   // Add the x-axis.
   svg_app.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (height + 10) + ")")
-      .call(xAxis);
-
+      .attr("transform", "translate(-5," + (height + 10) + ")")
+    .call(xAxis).selectAll(".tick")
+    .filter(function(d) { return (d.getYear() % 2 == 1) }).classed("minor", true);
 
   var colors = d3.scaleOrdinal().domain(['Applicants-African American', 'Applicants-Chicano/Latino', 'Applicants-American Indian', 'Applicants-White', 'Applicants-Asian']).range(d3.schemeCategory10);
   svg_app.selectAll('.line')
@@ -178,7 +176,7 @@ legend.append("text")
   // Add the y-axis.
   svg_app.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + (width) + ",0)")
+      .attr("transform", "translate(" + (width + 5) + ",0)")
       .call(yAxis);
   /* Optionally add a guideline */
   var guideline = svg_app.append('line')
@@ -205,7 +203,7 @@ legend.append("text")
   t.select('rect.curtain')
     .attr('width', 0);
   t.select('line.guide')
-    .attr('transform', 'translate(' + width + ', 0)')
+    .attr('transform', 'translate(' + (width) + ', 0)')
 
   d3.select("#show_guideline").on("change", function(e) {
     guideline.attr('stroke-width', this.checked ? 1 : 0);

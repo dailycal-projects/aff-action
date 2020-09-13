@@ -16,18 +16,6 @@ path.area {
   shape-rendering: crispEdges;
 }
 
-.x.axis line {
-  stroke: #fff;
-}
-
-.x.axis .minor {
-  stroke-opacity: .5;
-}
-
-.x.axis path {
-  display: none;
-}
-
 .y.axis line, .y.axis path {
   fill: none;
   stroke: #000;
@@ -104,8 +92,9 @@ d3.csv("berkeley_app.csv", function(error, data) {
   // Add the x-axis.
   svg_enroll.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (height + 10) + ")")
-      .call(xAxis);
+      .attr("transform", "translate(-5," + (height + 10) + ")")
+    .call(xAxis).selectAll(".tick")
+    .filter(function(d) { return (d.getYear() % 2 == 1) }).classed("minor", true);
 
 
   var colors = d3.scaleOrdinal().domain(['Enrollees-African American', 'Enrollees-Chicano/Latino', 'Enrollees-American Indian', 'Enrollees-White', 'Enrollees-Asian']).range(d3.schemeCategory10);
@@ -128,7 +117,7 @@ var title = svg_enroll.append("g")
 title.append("text")
       	.attr("class", "title")
       	.attr("text-anchor", "middle")
-      	.text("Yield rates to UC Berkeley by ethnicity")
+      	.text("Yield rates of UC Berkeley by ethnicity")
 var legend = svg_enroll.append("g")
     .style("font-family", "benton-sans")
     .style("font-size", 16)
@@ -165,7 +154,7 @@ legend.append("text")
   // Add the y-axis.
   svg_enroll.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + width + ",0)")
+      .attr("transform", "translate(" + (width+5) + ",0)")
       .call(yAxis);
   /* Optionally add a guideline */
   var guideline = svg_enroll.append('line')
