@@ -147,7 +147,7 @@ d3.csv("retention_data.csv", function(error, data) {
     .style("font-family", "benton-sans")
     .style("font-size", 16)
     .attr("text-anchor", "start")
-    .attr('transform', "translate(" + (width) + ",0)")
+    .attr('transform', "translate(" + (width + 10) + ",0)")
     .selectAll("g")
     .data([berk_aa_grad, berk_h_grad, berk_ai_grad,berk_w_grad, berk_ap_grad])
     .enter().append("g")

@@ -15,6 +15,14 @@ path.area {
 .axis {
   shape-rendering: crispEdges;
 }
+.x.axis text {
+  font-size: 14px;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
 
 .y.axis line, .y.axis path {
   fill: none;
@@ -121,7 +129,7 @@ var legend = svg_admit.append("g")
     .style("font-family", "benton-sans")
     .style("font-size", 16)
     .attr("text-anchor", "start")
-    .attr('transform', "translate(" + (width) + ",0)")
+    .attr('transform', "translate(" + (width + 10) + ",0)")
   .selectAll("g")
     .data([berk_aa_admit, berk_h_admit, berk_ai_admit,berk_w_admit, berk_ap_admit])
   .enter().append("g")
