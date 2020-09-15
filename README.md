@@ -2,7 +2,7 @@
 
 | Title | aff-action |
 |-|-|
-| Developer    | [Alex Zhao](axyzhao@berkeley.edu) |
+| Developer    | [Alex Zhao](mailto:axyzhao@berkeley.edu) |
 | Link | [http://projects.dailycal.org/2020/aff-action/](http://projects.dailycal.org/2020/aff-action/) |
 
 
